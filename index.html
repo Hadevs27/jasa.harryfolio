@@ -3,691 +3,1288 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Harnad Technology - Solusi Tugas Akademik & IT Development Terpercaya</title>
     
-    <!-- SEO Meta Tags -->
-    <meta name="description" content="Jasa joki tugas akademik (Makalah, Skripsi, Jurnal) dan pembuatan aplikasi IT (Web & Mobile) profesional, cepat, dan anti plagiasi.">
+    <!-- SEO & Metadata -->
+    <title>Harnad Technologies — Digital Solutions & Academic Assistance</title>
+    <meta name="description" content="Harnad Technologies menyediakan layanan academic assistance, web development, mobile development, dan technical assistance untuk kebutuhan akademik, personal, dan bisnis.">
+    <link rel="canonical" href="[PLACEHOLDER: PRODUCTION URL]">
+    <meta name="theme-color" content="#ffffff">
     
-    <!-- Google Fonts: Plus Jakarta Sans -->
+    <!-- Open Graph -->
+    <meta property="og:title" content="Harnad Technologies — Digital Solutions & Academic Assistance">
+    <meta property="og:description" content="Harnad Technologies menyediakan layanan academic assistance, web development, mobile development, dan technical assistance.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="[PLACEHOLDER: PRODUCTION URL]">
+    <meta property="og:image" content="[PLACEHOLDER: OPEN GRAPH IMAGE]">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="[PLACEHOLDER: FAVICON]">
+    
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Phosphor Icons (Modern & Clean Icons) -->
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
-    <!-- Tailwind CSS (Framework) -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            50: '#eff6ff',
-                            100: '#dbeafe',
-                            500: '#3b82f6',
-                            600: '#2563eb',
-                            700: '#1d4ed8',
-                            900: '#1e3a8a',
-                            950: '#172554',
-                        },
-                        accent: {
-                            500: '#f59e0b',
-                            600: '#d97706',
-                        }
-                    },
-                    boxShadow: {
-                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
-                        'glow': '0 0 20px rgba(59, 130, 246, 0.5)',
-                    }
-                }
-            }
-        }
-    </script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
+        /* =========================================
+           01. DESIGN TOKENS
+        ========================================= */
+        :root {
+            /* Color System - Professional, Technical, Restrained */
+            --color-background: #F9FAFB; /* Off-white for depth */
+            --color-surface: #FFFFFF;
+            --color-text-primary: #111827; /* Deep Charcoal */
+            --color-text-secondary: #4B5563; /* Muted Gray */
+            --color-text-tertiary: #6B7280;
+            --color-border: #E5E7EB;
+            --color-accent: #111827; /* Primary actions use near-black for premium feel */
+            --color-accent-hover: #374151;
+            --color-link: #2563EB; /* Restrained blue for links/specific highlights */
+            
+            /* Typography */
+            --font-primary: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            
+            /* Spacing */
+            --space-xs: 0.5rem;   /* 8px */
+            --space-sm: 1rem;     /* 16px */
+            --space-md: 1.5rem;   /* 24px */
+            --space-lg: 2.5rem;   /* 40px */
+            --space-xl: 4rem;     /* 64px */
+            --space-2xl: 6rem;    /* 96px */
+            
+            /* Layout */
+            --container-width: 1200px;
+            --header-height: 72px;
+            
+            /* Borders & Radius */
+            --radius-sm: 4px;
+            --radius-md: 6px;
+            --border-width: 1px;
+            
+            /* Transitions */
+            --transition-fast: 150ms ease;
+            --transition-normal: 250ms ease;
+        }
+
+        /* =========================================
+           02. RESET & BASE
+        ========================================= */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: #fafafa;
+            font-family: var(--font-primary);
+            color: var(--color-text-secondary);
+            background-color: var(--color-background);
+            line-height: 1.6;
+            font-size: 16px;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f1f1;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--color-text-primary);
+            font-weight: 600;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
         }
 
-        /* Scroll Reveal Animations */
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        ul, ol {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        button {
+            font-family: inherit;
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        /* =========================================
+           03. UTILITIES & LAYOUT
+        ========================================= */
+        .container {
+            width: 100%;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--space-sm);
+        }
+
+        @media (min-width: 768px) {
+            .container { padding: 0 var(--space-md); }
+        }
+
+        .section-padding {
+            padding-top: var(--space-xl);
+            padding-bottom: var(--space-xl);
+        }
+
+        @media (min-width: 1024px) {
+            .section-padding {
+                padding-top: var(--space-2xl);
+                padding-bottom: var(--space-2xl);
+            }
+        }
+
+        /* Typography Utilities */
+        .text-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+
+        .heading-lg { font-size: clamp(2.5rem, 5vw, 4rem); letter-spacing: -0.03em; }
+        .heading-md { font-size: clamp(2rem, 4vw, 2.5rem); }
+        .heading-sm { font-size: 1.5rem; }
+        
+        .text-lead {
+            font-size: clamp(1.125rem, 2vw, 1.25rem);
+            color: var(--color-text-secondary);
+            max-width: 65ch;
+            margin-top: var(--space-md);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.75rem 1.5rem;
+            font-size: 0.9375rem;
+            font-weight: 500;
+            border-radius: var(--radius-md);
+            transition: all var(--transition-fast);
+            text-decoration: none;
+            line-height: 1;
+        }
+
+        .btn-primary {
+            background-color: var(--color-accent);
+            color: var(--color-surface);
+            border: 1px solid var(--color-accent);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-accent-hover);
+            border-color: var(--color-accent-hover);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--color-text-primary);
+            border: 1px solid var(--color-border);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--color-text-primary);
+            background-color: var(--color-surface);
+        }
+
+        /* Accessibility focus */
+        :focus-visible {
+            outline: 2px solid var(--color-link);
+            outline-offset: 2px;
+        }
+
+        /* Semantic Layout Components */
+        .grid-2 { display: grid; gap: var(--space-lg); }
+        .grid-3 { display: grid; gap: var(--space-lg); }
+        
+        @media (min-width: 768px) {
+            .grid-2 { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (min-width: 1024px) {
+            .grid-3 { grid-template-columns: repeat(3, 1fr); }
+        }
+
+        /* Structured Card (No heavy shadows, just borders) */
+        .border-card {
+            background: var(--color-surface);
+            border: var(--border-width) solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: var(--space-lg);
+            transition: border-color var(--transition-normal);
+        }
+
+        .border-card:hover {
+            border-color: var(--color-text-tertiary);
+        }
+
+        /* =========================================
+           04. HEADER & NAVIGATION
+        ========================================= */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: var(--header-height);
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid transparent;
+            z-index: 100;
+            transition: border-color var(--transition-fast);
+        }
+
+        .header.scrolled {
+            border-bottom-color: var(--color-border);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .brand {
+            font-weight: 700;
+            font-size: 1.125rem;
+            color: var(--color-text-primary);
+            letter-spacing: -0.01em;
+        }
+
+        /* Desktop Nav */
+        .nav-links {
+            display: none;
+            align-items: center;
+            gap: var(--space-md);
+        }
+
+        @media (min-width: 1024px) {
+            .nav-links { display: flex; }
+        }
+
+        .nav-link {
+            font-size: 0.9375rem;
+            font-weight: 500;
+            color: var(--color-text-secondary);
+        }
+
+        .nav-link:hover {
+            color: var(--color-text-primary);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: block;
+            padding: 0.5rem;
+            color: var(--color-text-primary);
+        }
+        @media (min-width: 1024px) {
+            .mobile-menu-btn { display: none; }
+        }
+
+        /* Mobile Navigation Overlay */
+        .mobile-nav {
+            position: fixed;
+            top: var(--header-height);
+            left: 0;
+            width: 100%;
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            padding: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-md);
+            transform: translateY(-150%);
+            opacity: 0;
+            visibility: hidden;
+            transition: all var(--transition-normal);
+            z-index: 99;
+        }
+
+        .mobile-nav.active {
+            transform: translateY(0);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* =========================================
+           05. HERO SECTION
+        ========================================= */
+        .hero {
+            padding-top: calc(var(--header-height) + var(--space-xl));
+            padding-bottom: var(--space-2xl);
+            background-color: var(--color-surface);
+            border-bottom: 1px solid var(--color-border);
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: var(--space-lg);
+            flex-wrap: wrap;
+        }
+
+        .hero-microcopy {
+            margin-top: var(--space-lg);
+            font-size: 0.875rem;
+            color: var(--color-text-tertiary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* =========================================
+           06. SERVICES SECTION
+        ========================================= */
+        .services-section {
+            background-color: var(--color-background);
+        }
+
+        .service-list {
+            margin-top: var(--space-md);
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+            font-size: 0.9375rem;
+            color: var(--color-text-primary);
+        }
+
+        .service-item::before {
+            content: "—";
+            color: var(--color-text-tertiary);
+        }
+
+        /* =========================================
+           07. WHY HARNAD & PROCESS
+        ========================================= */
+        .feature-item h3 {
+            margin-bottom: var(--space-xs);
+            font-size: 1.125rem;
+        }
+
+        .process-list {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-lg);
+            counter-reset: process-counter;
+        }
+
+        .process-item {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .process-item::before {
+            counter-increment: process-counter;
+            content: "0" counter(process-counter);
+            position: absolute;
+            left: 0;
+            top: 0.15rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--color-text-tertiary);
+        }
+
+        /* =========================================
+           08. PROFESSIONAL BACKGROUND
+        ========================================= */
+        .cert-card {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xs);
+        }
+        .cert-meta {
+            font-size: 0.875rem;
+            color: var(--color-text-secondary);
+        }
+
+        /* =========================================
+           09. TECHNOLOGIES
+        ========================================= */
+        .tech-group {
+            margin-bottom: var(--space-md);
+        }
+        .tech-group h4 {
+            font-size: 0.875rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-xs);
+        }
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-sm);
+        }
+        .tech-tag {
+            font-size: 0.875rem;
+            padding: 0.25rem 0.75rem;
+            border: 1px solid var(--color-border);
+            border-radius: 99px; /* The only highly rounded element, for tags */
+            background-color: var(--color-surface);
+            color: var(--color-text-primary);
+        }
+
+        /* =========================================
+           10. PROJECTS
+        ========================================= */
+        .project-card {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .project-image-placeholder {
+            width: 100%;
+            aspect-ratio: 16/9;
+            background-color: var(--color-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-tertiary);
+            font-size: 0.875rem;
+            border-radius: var(--radius-sm);
+            margin-bottom: var(--space-md);
+        }
+
+        .project-meta {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--color-text-tertiary);
+            margin-bottom: var(--space-xs);
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-xs);
+        }
+
+        .project-desc {
+            font-size: 0.9375rem;
+            margin-bottom: var(--space-md);
+            flex-grow: 1;
+        }
+
+        .project-links {
+            display: flex;
+            gap: var(--space-sm);
+            margin-top: auto;
+        }
+        
+        .project-link {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--color-link);
+            text-decoration: underline;
+            text-underline-offset: 4px;
+        }
+
+        .harryfolio-banner {
+            background-color: var(--color-surface);
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-sm);
+            padding: var(--space-lg);
+            text-align: center;
+            margin-top: var(--space-xl);
+        }
+
+        /* =========================================
+           11. FAQ ACCORDION
+        ========================================= */
+        .faq-list {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--color-border);
+        }
+
+        .faq-button {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: var(--space-md) 0;
+            text-align: left;
+            font-size: 1.125rem;
+            font-weight: 500;
+            color: var(--color-text-primary);
+        }
+
+        .faq-icon {
+            width: 24px;
+            height: 24px;
+            position: relative;
+            flex-shrink: 0;
+            transition: transform var(--transition-fast);
+        }
+
+        .faq-icon::before, .faq-icon::after {
+            content: '';
+            position: absolute;
+            background-color: currentColor;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .faq-icon::before { width: 14px; height: 2px; }
+        .faq-icon::after { width: 2px; height: 14px; transition: transform var(--transition-fast); }
+        
+        .faq-button[aria-expanded="true"] .faq-icon::after { transform: translate(-50%, -50%) scaleY(0); }
+
+        .faq-content {
+            display: grid;
+            grid-template-rows: 0fr;
+            transition: grid-template-rows var(--transition-normal);
+        }
+
+        .faq-content-inner {
+            overflow: hidden;
+            padding-bottom: 0;
+            color: var(--color-text-secondary);
+            transition: padding-bottom var(--transition-normal);
+        }
+
+        .faq-button[aria-expanded="true"] + .faq-content {
+            grid-template-rows: 1fr;
+        }
+        .faq-button[aria-expanded="true"] + .faq-content .faq-content-inner {
+            padding-bottom: var(--space-md);
+        }
+
+        /* =========================================
+           12. FOOTER
+        ========================================= */
+        .footer {
+            background-color: var(--color-surface);
+            border-top: 1px solid var(--color-border);
+            padding: var(--space-xl) 0 var(--space-lg);
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: var(--space-xl);
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid { grid-template-columns: 2fr 1fr 1fr; }
+        }
+
+        .footer-brand { margin-bottom: var(--space-xs); font-weight: 700; color: var(--color-text-primary); }
+        .footer-descriptor { font-size: 0.875rem; color: var(--color-text-tertiary); margin-bottom: var(--space-sm); }
+        
+        .footer h4 { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: var(--space-md); color: var(--color-text-primary); }
+        
+        .footer-links { display: flex; flex-direction: column; gap: var(--space-sm); }
+        .footer-links a { font-size: 0.9375rem; color: var(--color-text-secondary); }
+        .footer-links a:hover { color: var(--color-text-primary); }
+
+        .footer-bottom {
+            margin-top: var(--space-xl);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--color-border);
+            font-size: 0.875rem;
+            color: var(--color-text-tertiary);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* =========================================
+           13. ANIMATIONS & REVEAL
+        ========================================= */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
         }
         .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
-
-        /* Glassmorphism Navbar */
-        .glass-nav {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        /* Gradient Text */
-        .text-gradient {
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-image: linear-gradient(to right, #1d4ed8, #3b82f6);
-        }
-
-        .blob {
-            position: absolute;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.4;
+        @media (prefers-reduced-motion: reduce) {
+            .reveal { transition: none; opacity: 1; transform: none; }
         }
     </style>
 </head>
-<body class="text-slate-800 antialiased overflow-x-hidden relative">
+<body>
 
-    <!-- Background Decorative Blobs -->
-    <div class="blob bg-brand-200 w-96 h-96 rounded-full top-[-10%] left-[-10%]"></div>
-    <div class="blob bg-blue-200 w-96 h-96 rounded-full top-[20%] right-[-10%]"></div>
+    <!-- =========================================
+         HEADER
+    ========================================= -->
+    <header class="header" id="header">
+        <div class="container nav-container">
+            <a href="#" class="brand" aria-label="Harnad Technologies Beranda">HARNAD TECHNOLOGIES</a>
+            
+            <nav class="nav-links" aria-label="Main Navigation Desktop">
+                <a href="#layanan" class="nav-link">Layanan</a>
+                <a href="#keunggulan" class="nav-link">Keunggulan</a>
+                <a href="#teknologi" class="nav-link">Teknologi</a>
+                <a href="#project" class="nav-link">Project</a>
+                <a href="#proses" class="nav-link">Proses</a>
+                <a href="#faq" class="nav-link">FAQ</a>
+                <button class="btn btn-primary btn-whatsapp" style="margin-left: 1rem;">Konsultasi</button>
+            </nav>
 
-    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent py-4">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="flex items-center justify-between">
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-2 group">
-                    <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-brand-600/30 shadow-lg group-hover:scale-105 transition-transform">
-                        TP
-                    </div>
-                    <span class="text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-brand-600 transition-colors">Tugas<span class="text-brand-600">Pro</span></span>
-                </a>
-
-                <!-- Desktop Menu -->
-                <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600">
-                    <a href="#layanan" class="hover:text-brand-600 transition-colors">Layanan Kami</a>
-                    <a href="#keunggulan" class="hover:text-brand-600 transition-colors">Kenapa Kami?</a>
-                    <a href="#cara-pesan" class="hover:text-brand-600 transition-colors">Cara Order</a>
-                    <a href="#faq" class="hover:text-brand-600 transition-colors">FAQ</a>
-                </nav>
-
-                <!-- CTA & Mobile Toggle -->
-                <div class="flex items-center gap-4">
-                    <a href="#kontak" class="hidden md:flex items-center gap-2 bg-slate-900 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-brand-500/30 hover:-translate-y-0.5">
-                        Tanya-tanya Dulu <i class="ph ph-whatsapp-logo font-bold"></i>
-                    </a>
-                    
-                    <!-- Mobile Menu Button -->
-                    <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-brand-600 text-3xl focus:outline-none">
-                        <i class="ph ph-list"></i>
-                    </button>
-                </div>
-            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-expanded="false" aria-label="Toggle Menu">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
         </div>
-
-        <!-- Mobile Menu Dropdown -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 flex-col py-4 px-6 gap-4 md:hidden">
-            <a href="#layanan" class="mobile-link text-slate-700 font-medium hover:text-brand-600">Layanan Kami</a>
-            <a href="#keunggulan" class="mobile-link text-slate-700 font-medium hover:text-brand-600">Kenapa Kami?</a>
-            <a href="#cara-pesan" class="mobile-link text-slate-700 font-medium hover:text-brand-600">Cara Order</a>
-            <a href="#faq" class="mobile-link text-slate-700 font-medium hover:text-brand-600">FAQ</a>
-            <a href="#kontak" class="w-full text-center bg-brand-600 text-white px-6 py-3 rounded-xl font-semibold mt-2">Tanya-tanya Dulu</a>
-        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav class="mobile-nav" id="mobileNav" aria-label="Main Navigation Mobile">
+            <a href="#layanan" class="nav-link mobile-link">Layanan</a>
+            <a href="#keunggulan" class="nav-link mobile-link">Keunggulan</a>
+            <a href="#teknologi" class="nav-link mobile-link">Teknologi</a>
+            <a href="#project" class="nav-link mobile-link">Project</a>
+            <a href="#proses" class="nav-link mobile-link">Proses</a>
+            <a href="#faq" class="nav-link mobile-link">FAQ</a>
+            <button class="btn btn-primary btn-whatsapp" style="width: 100%; margin-top: 1rem;">Konsultasi Sekarang</button>
+        </nav>
     </header>
 
-    <section class="pt-40 pb-20 lg:pt-48 lg:pb-32 relative overflow-hidden">
-        <div class="container mx-auto px-6 max-w-7xl relative z-10">
-            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-                <!-- Text Content -->
-                <div class="max-w-2xl reveal">
-                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-brand-600 font-semibold text-sm mb-6">
-                        <span class="relative flex h-3 w-3">
-                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
-                          <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-600"></span>
-                        </span>
-                        Beresin Tugas Ga Pake Ribet
-                    </div>
-                    <h1 class="text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight mb-6 text-slate-900">
-                        Deadline Mepet? Pusing Ngoding? <br>
-                        <span class="text-gradient">Biar Kami Yang Beresin.</span>
-                    </h1>
-                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
-                        Fokus aja sama kesibukan lo yang lain. Urusan ngetik Makalah, nyusun Skripsi, sampai bikin Aplikasi Web & Mobile serahin ke tim expert kami. Dijamin aman, anti-plagiat, dan kelar tepat waktu.
-                    </p>
-                    <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#layanan" class="flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-lg shadow-brand-500/30 hover:-translate-y-1">
-                            Cek Layanan & Harga
-                        </a>
-                        <a href="https://wa.me/6281234567890" target="_blank" class="flex justify-center items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-4 rounded-full font-bold transition-all duration-300 hover:shadow-soft hover:-translate-y-1">
-                            <i class="ph-fill ph-whatsapp-logo text-green-500 text-xl"></i>
-                            Konsultasi via WA (Gratis)
-                        </a>
+    <main>
+        <!-- =========================================
+             HERO SECTION
+        ========================================= -->
+        <section class="hero reveal" aria-labelledby="hero-heading">
+            <div class="container">
+                <div class="hero-content">
+                    <span class="text-label">HARNAD TECHNOLOGIES</span>
+                    <h1 id="hero-heading" class="heading-lg">Solusi Digital untuk Kebutuhan Akademik dan Bisnis</h1>
+                    <p class="text-lead">Kami membantu mahasiswa, individu, dan bisnis melalui layanan academic assistance, pengembangan website, aplikasi mobile, serta solusi software yang disesuaikan dengan kebutuhan setiap project.</p>
+                    
+                    <div class="hero-actions">
+                        <button class="btn btn-primary btn-whatsapp">Konsultasi Sekarang</button>
+                        <a href="#layanan" class="btn btn-secondary">Lihat Layanan</a>
                     </div>
                     
-                    <!-- Trust Indicators -->
-                    <div class="mt-10 flex items-center gap-6 text-sm font-medium text-slate-500 flex-wrap">
-                        <div class="flex items-center gap-2"><i class="ph-fill ph-shield-check text-brand-500 text-lg"></i> Privasi 100% Aman</div>
-                        <div class="flex items-center gap-2"><i class="ph-fill ph-arrow-u-up-left text-brand-500 text-lg"></i> Revisi Sampai ACC</div>
-                        <div class="flex items-center gap-2"><i class="ph-fill ph-lightning text-brand-500 text-lg"></i> Bisa Express (Sistem SKS)</div>
+                    <div class="hero-microcopy">
+                        <span>Professional</span> • <span>Structured</span> • <span>Solution-Oriented</span>
                     </div>
                 </div>
+            </div>
+        </section>
 
-                <!-- Hero Illustration/Visual -->
-                <div class="relative lg:ml-auto w-full max-w-lg reveal delay-200">
-                    <div class="relative bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 z-10 transform -rotate-2 hover:rotate-0 transition-transform duration-500">
-                        <!-- Mockup Header -->
-                        <div class="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
-                            <div class="flex items-center gap-3">
-                                <div class="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center text-brand-600">
-                                    <i class="ph-fill ph-file-code text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-slate-900">Progres Pengerjaan</h3>
-                                    <p class="text-xs text-slate-500">Skripsi & Web App Klien</p>
-                                </div>
-                            </div>
-                            <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">On Schedule</span>
+        <!-- =========================================
+             SERVICES SECTION
+        ========================================= -->
+        <section id="layanan" class="section-padding services-section">
+            <div class="container reveal">
+                <div style="max-width: 600px; margin-bottom: var(--space-xl);">
+                    <span class="text-label">LAYANAN</span>
+                    <h2 class="heading-md">Layanan yang Disesuaikan dengan Kebutuhan Anda</h2>
+                    <p class="text-lead">Dari kebutuhan akademik hingga pengembangan software, Harnad Technologies menyediakan layanan yang fleksibel dengan pendekatan yang terstruktur.</p>
+                </div>
+
+                <div class="grid-3">
+                    <article class="border-card">
+                        <h3 class="heading-sm">Academic Assistance</h3>
+                        <p style="margin-top: 0.5rem; color: var(--color-text-secondary); font-size: 0.9375rem;">Bantuan dan pendampingan untuk berbagai kebutuhan akademik, dokumentasi, presentasi, serta project teknis.</p>
+                        <ul class="service-list">
+                            <li class="service-item">Makalah</li>
+                            <li class="service-item">Presentasi / PPT</li>
+                            <li class="service-item">Laporan</li>
+                            <li class="service-item">Laporan Kerja Praktik</li>
+                            <li class="service-item">Seminar Proposal</li>
+                            <li class="service-item">Skripsi</li>
+                            <li class="service-item">Dokumentasi</li>
+                            <li class="service-item">Technical Project Assistance</li>
+                        </ul>
+                    </article>
+
+                    <article class="border-card">
+                        <h3 class="heading-sm">Web Development</h3>
+                        <p style="margin-top: 0.5rem; color: var(--color-text-secondary); font-size: 0.9375rem;">Pengembangan website dan aplikasi web untuk kebutuhan personal, bisnis, organisasi, maupun project custom.</p>
+                        <ul class="service-list">
+                            <li class="service-item">Landing Page</li>
+                            <li class="service-item">Company Profile</li>
+                            <li class="service-item">Portfolio Website</li>
+                            <li class="service-item">Custom Website</li>
+                            <li class="service-item">Web Application</li>
+                            <li class="service-item">Information System</li>
+                            <li class="service-item">Dashboard</li>
+                            <li class="service-item">Backend & API</li>
+                            <li class="service-item">Maintenance</li>
+                            <li class="service-item">Bug Fixing</li>
+                        </ul>
+                    </article>
+
+                    <article class="border-card">
+                        <h3 class="heading-sm">Mobile Development</h3>
+                        <p style="margin-top: 0.5rem; color: var(--color-text-secondary); font-size: 0.9375rem;">Pengembangan aplikasi mobile yang dirancang sesuai kebutuhan fitur, alur pengguna, dan tujuan project.</p>
+                        <ul class="service-list">
+                            <li class="service-item">Android</li>
+                            <li class="service-item">iOS</li>
+                            <li class="service-item">Cross-Platform</li>
+                            <li class="service-item">Flutter</li>
+                            <li class="service-item">Custom Mobile Application</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             WHY HARNAD SECTION
+        ========================================= -->
+        <section id="keunggulan" class="section-padding" style="background-color: var(--color-surface);">
+            <div class="container reveal">
+                <div style="max-width: 600px; margin-bottom: var(--space-xl);">
+                    <span class="text-label">WHY HARNAD</span>
+                    <h2 class="heading-md">Pendekatan Profesional untuk Setiap Project</h2>
+                    <p class="text-lead">Setiap kebutuhan dimulai dengan memahami masalah, menentukan solusi yang tepat, lalu mengerjakannya secara terstruktur agar hasil yang diberikan tetap relevan dengan tujuan project.</p>
+                </div>
+
+                <div class="grid-2">
+                    <div class="feature-item">
+                        <h3>Professional Approach</h3>
+                        <p>Kebutuhan, scope, dan tujuan project dibahas terlebih dahulu sebelum proses pengerjaan dimulai.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Structured Process</h3>
+                        <p>Project dikerjakan melalui tahapan yang jelas mulai dari konsultasi, pengembangan, review, hingga delivery.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Custom Solutions</h3>
+                        <p>Solusi dikembangkan berdasarkan kebutuhan project, bukan sekadar menggunakan template yang sama untuk semua client.</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3>Clear Communication</h3>
+                        <p>Komunikasi dilakukan secara terbuka agar kebutuhan, perubahan, dan hasil project dapat dipahami bersama.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             PROFESSIONAL BACKGROUND SECTION
+        ========================================= -->
+        <section class="section-padding" style="border-top: 1px solid var(--color-border); background-color: var(--color-surface);">
+            <div class="container reveal">
+                <div class="grid-2" style="align-items: start;">
+                    <div>
+                        <span class="text-label">PROFESSIONAL BACKGROUND</span>
+                        <h2 class="heading-md">Built with Technical Expertise</h2>
+                        <p class="text-lead" style="margin-bottom: var(--space-md);">Harnad Technologies dibangun dengan pengalaman dalam pengembangan frontend, backend, web application, mobile application, database, dan software development.</p>
+                    </div>
+                    <div class="border-card cert-card">
+                        <div class="text-label" style="margin-bottom: 0;">Professional Certification</div>
+                        <h3 class="heading-sm" style="margin-bottom: 0.25rem;">[PLACEHOLDER: NAMA SERTIFIKASI]</h3>
+                        <div class="cert-meta">
+                            Issuer: [PLACEHOLDER: NAMA LEMBAGA PENERBIT]<br>
+                            Credential: [PLACEHOLDER: NOMOR / ID SERTIFIKASI JIKA ADA]
                         </div>
-                        
-                        <!-- Mockup Body (Skeleton lines) -->
-                        <div class="space-y-4">
-                            <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
-                                <div class="w-3/4 h-full bg-brand-500 rounded-full"></div>
-                            </div>
-                            <p class="text-xs text-slate-400 text-right">Progress Update - 75%</p>
-                            
-                            <div class="grid grid-cols-2 gap-4 mt-6">
-                                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                    <i class="ph-duotone ph-book-open text-3xl text-brand-500 mb-2"></i>
-                                    <h4 class="font-bold text-sm text-slate-800">Bab 4 Kelar</h4>
-                                    <p class="text-xs text-slate-500 mt-1">Turnitin < 15%</p>
-                                </div>
-                                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
-                                    <i class="ph-duotone ph-bug-droid text-3xl text-brand-500 mb-2"></i>
-                                    <h4 class="font-bold text-sm text-slate-800">UAT Passed</h4>
-                                    <p class="text-xs text-slate-500 mt-1">Aplikasi Ready</p>
-                                </div>
-                            </div>
+                        <a href="[PLACEHOLDER: URL VERIFIKASI]" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-top: 0.5rem; display: inline-block;">Verifikasi Sertifikat</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             TECHNOLOGIES SECTION
+        ========================================= -->
+        <section id="teknologi" class="section-padding" style="background-color: var(--color-background);">
+            <div class="container reveal">
+                <div style="max-width: 600px; margin-bottom: var(--space-xl);">
+                    <span class="text-label">TECHNOLOGY</span>
+                    <h2 class="heading-md">Technology Behind the Solutions</h2>
+                    <p class="text-lead">Teknologi dipilih berdasarkan kebutuhan project, skalabilitas, maintainability, dan kebutuhan deployment.</p>
+                </div>
+
+                <div class="grid-3">
+                    <div class="tech-group">
+                        <h4>Frontend</h4>
+                        <div class="tech-list">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
                         </div>
                     </div>
                     
-                    <!-- Decorative background card -->
-                    <div class="absolute inset-0 bg-gradient-to-br from-brand-600 to-indigo-800 rounded-3xl transform rotate-3 translate-x-4 translate-y-4 -z-10 shadow-xl opacity-80"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="layanan" class="py-20 bg-white relative">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <h2 class="text-brand-600 font-bold uppercase tracking-wider text-sm mb-2">Jasa Akademik</h2>
-                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Urusan Ketik-Mengetik, Biar Kami Ahlinya</h3>
-                <p class="text-slate-600">Nggak usah begadang lagi. Tim penulis kami siap ngerjain tugas lo sesuai pedoman kampus, lolos uji Turnitin, dan pastinya dapet nilai maksimal.</p>
-            </div>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                <!-- Academic Card 1 -->
-                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-soft hover:bg-white hover:-translate-y-1 transition-all duration-300 group reveal">
-                    <div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center text-brand-600 text-3xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                        <i class="ph-duotone ph-article"></i>
+                    <div class="tech-group">
+                        <h4>Backend</h4>
+                        <div class="tech-list">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">Laravel</span>
+                            <span class="tech-tag">Node.js</span>
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Django</span>
+                        </div>
                     </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Makalah & Essay</h4>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Dari tugas harian sampai UTS/UAS. Ditulis rapi sesuai EYD, referensi jurnal terbaru, no copy-paste.</p>
-                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center mt-auto">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
-                        <span class="text-lg font-extrabold text-slate-900">Rp XK</span>
+                    
+                    <div class="tech-group">
+                        <h4>Modern Web</h4>
+                        <div class="tech-list">
+                            <span class="tech-tag">Next.js</span>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Academic Card 2 -->
-                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-soft hover:bg-white hover:-translate-y-1 transition-all duration-300 group reveal delay-100">
-                    <div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center text-brand-600 text-3xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                        <i class="ph-duotone ph-flask"></i>
+                    
+                    <div class="tech-group">
+                        <h4>Mobile</h4>
+                        <div class="tech-list">
+                            <span class="tech-tag">Flutter</span>
+                        </div>
                     </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Laporan Praktikum (Laprak)</h4>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Nggak sempet ngolah data? Kita buatin laprak komplit sama perhitungan, grafik, dan pembahasannya.</p>
-                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center mt-auto">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
-                        <span class="text-lg font-extrabold text-slate-900">Rp XK</span>
-                    </div>
-                </div>
-
-                <!-- Academic Card 3 -->
-                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-soft hover:bg-white hover:-translate-y-1 transition-all duration-300 group reveal delay-200">
-                    <div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center text-brand-600 text-3xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                        <i class="ph-duotone ph-books"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Jurnal Ilmiah / Artikel</h4>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Bantu nulis, translate, atau re-write artikel buat syarat kelulusan/publikasi Sinta & jurnal nasional.</p>
-                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center mt-auto">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
-                        <span class="text-lg font-extrabold text-slate-900">Rp XK</span>
-                    </div>
-                </div>
-
-                <!-- Academic Card 4 -->
-                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-soft hover:bg-white hover:-translate-y-1 transition-all duration-300 group reveal">
-                    <div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center text-brand-600 text-3xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                        <i class="ph-duotone ph-briefcase"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Laporan Kerja Praktik / Magang</h4>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Magang udah capek, laporan serahin ke kita. Mulai dari bab pendahuluan sampai kesimpulan & saran.</p>
-                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center mt-auto">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
-                        <span class="text-lg font-extrabold text-slate-900">Rp XK</span>
-                    </div>
-                </div>
-
-                <!-- Academic Card 5 -->
-                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-soft hover:bg-white hover:-translate-y-1 transition-all duration-300 group reveal delay-100">
-                    <div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center text-brand-600 text-3xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
-                        <i class="ph-duotone ph-presentation-chart"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-slate-900 mb-3">Seminar Proposal (Sempro)</h4>
-                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Kita buatin draft proposal Bab 1-3 sekalian sama desain slide PPT-nya biar dosen penguji terkesima.</p>
-                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center mt-auto">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
-                        <span class="text-lg font-extrabold text-slate-900">Rp XK</span>
-                    </div>
-                </div>
-
-                <!-- Academic Card 6 -->
-                <div class="relative bg-gradient-to-br from-slate-900 to-brand-950 border border-slate-800 p-8 rounded-3xl hover:-translate-y-1 transition-all duration-300 shadow-xl group reveal delay-200">
-                    <div class="absolute top-0 right-0 p-4">
-                        <span class="bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">Paling Laris🔥</span>
-                    </div>
-                    <div class="w-14 h-14 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center text-accent-500 text-3xl mb-6 backdrop-blur-sm">
-                        <i class="ph-duotone ph-graduation-cap"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-white mb-3">Skripsi / Tugas Akhir</h4>
-                    <p class="text-slate-300 text-sm mb-6 leading-relaxed">Mentok di bab 4? Dosen revisi mulu? Kita bantu full bab 1-5, olah data SPSS/Python, garansi sampai lulus.</p>
-                    <div class="pt-4 border-t border-slate-700/50 flex justify-between items-center mt-auto">
-                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
-                        <span class="text-lg font-extrabold text-white">Rp XK</span>
+                    
+                    <div class="tech-group">
+                        <h4>Database</h4>
+                        <div class="tech-list">
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section class="py-20 bg-slate-50 border-t border-slate-200">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="flex flex-col lg:flex-row gap-12 items-center">
-                <!-- IT Section Text Content -->
-                <div class="lg:w-1/3 reveal">
-                    <h2 class="text-brand-600 font-bold uppercase tracking-wider text-sm mb-2">IT & Software Studio</h2>
-                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Bikin Aplikasi Ga Perlu Begadang</h3>
-                    <p class="text-slate-600 mb-8 leading-relaxed">
-                        Tugas Akhir suruh bikin aplikasi tapi error terus? Atau butuh website buat bisnis? Programmer senior kami yang akan ngodingin buat lo. Kode rapi, minim bug, dan gampang di-maintenance.
-                    </p>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 bg-green-100 text-green-600 rounded-full p-1"><i class="ph-bold ph-check text-sm"></i></div>
-                            <div>
-                                <h5 class="font-bold text-slate-900 text-sm">Tech Stack Kekinian</h5>
-                                <p class="text-xs text-slate-500">React, Laravel, Vue, Flutter, Node.js.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="mt-1 bg-green-100 text-green-600 rounded-full p-1"><i class="ph-bold ph-check text-sm"></i></div>
-                            <div>
-                                <h5 class="font-bold text-slate-900 text-sm">Include Source Code</h5>
-                                <p class="text-xs text-slate-500">Kita kasih full akses code + diajarin cara running-nya.</p>
-                            </div>
-                        </li>
-                    </ul>
-                    <a href="#kontak" class="inline-flex justify-center items-center gap-2 bg-slate-900 hover:bg-brand-600 text-white px-6 py-3 rounded-xl font-bold transition-colors">
-                        Ngobrolin Project IT
-                    </a>
+        <!-- =========================================
+             PROJECTS SECTION
+        ========================================= -->
+        <section id="project" class="section-padding" style="background-color: var(--color-surface);">
+            <div class="container reveal">
+                <div style="max-width: 600px; margin-bottom: var(--space-xl);">
+                    <span class="text-label">SELECTED PROJECTS</span>
+                    <h2 class="heading-md">Beberapa Project yang Pernah Dikembangkan</h2>
+                    <p class="text-lead">Kumpulan project terpilih yang merepresentasikan pengalaman dalam pengembangan website, aplikasi, sistem informasi, AI, dan software.</p>
                 </div>
 
-                <!-- IT Services Cards Grid -->
-                <div class="lg:w-2/3 grid sm:grid-cols-2 gap-6 w-full">
-                    <!-- IT Card 1 -->
-                    <div class="bg-white border border-slate-200 p-8 rounded-3xl hover:border-brand-300 hover:shadow-soft transition-all duration-300 reveal delay-100">
-                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-brand-600 text-2xl mb-5">
-                            <i class="ph-duotone ph-desktop"></i>
+                <div class="grid-2">
+                    <!-- Project 1 -->
+                    <article class="project-card">
+                        <div class="project-image-placeholder">
+                            [PLACEHOLDER: PROJECT IMAGE]
                         </div>
-                        <h4 class="text-lg font-bold text-slate-900 mb-2">Web Landing Page / Company Profile</h4>
-                        <p class="text-slate-500 text-sm mb-6">Website cakep buat nampilin profil bisnis, portofolio, atau tugas kampus. Tampil responsif di HP.</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">HTML/Tailwind</span>
-                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">React/Next.js</span>
-                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">WordPress</span>
+                        <div class="project-meta">[PLACEHOLDER: CATEGORY] • [PLACEHOLDER: TECHNOLOGIES]</div>
+                        <h3 class="project-title">[PLACEHOLDER: PROJECT NAME]</h3>
+                        <p class="project-desc">[PLACEHOLDER: PROJECT DESCRIPTION]</p>
+                        <div class="project-links">
+                            <a href="[PLACEHOLDER: PROJECT URL]" class="project-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                            <a href="[PLACEHOLDER: GITHUB URL]" class="project-link" target="_blank" rel="noopener noreferrer">Repository</a>
                         </div>
-                        <div class="pt-4 border-t border-slate-100 flex justify-between items-center">
-                            <span class="text-lg font-extrabold text-slate-900">Start Rp XK</span>
+                    </article>
+
+                    <!-- Project 2 -->
+                    <article class="project-card">
+                        <div class="project-image-placeholder">
+                            [PLACEHOLDER: PROJECT IMAGE]
+                        </div>
+                        <div class="project-meta">[PLACEHOLDER: CATEGORY] • [PLACEHOLDER: TECHNOLOGIES]</div>
+                        <h3 class="project-title">[PLACEHOLDER: PROJECT NAME]</h3>
+                        <p class="project-desc">[PLACEHOLDER: PROJECT DESCRIPTION]</p>
+                        <div class="project-links">
+                            <a href="[PLACEHOLDER: PROJECT URL]" class="project-link" target="_blank" rel="noopener noreferrer">Live Demo</a>
+                            <a href="[PLACEHOLDER: GITHUB URL]" class="project-link" target="_blank" rel="noopener noreferrer">Repository</a>
+                        </div>
+                    </article>
+                </div>
+
+                <!-- Harryfolio Connection -->
+                <div class="harryfolio-banner">
+                    <h3 class="heading-sm" style="margin-bottom: 0.5rem;">Ingin melihat project lainnya?</h3>
+                    <p style="margin-bottom: var(--space-md); color: var(--color-text-secondary);">Lihat portfolio lengkap untuk melihat project, eksperimen, dan karya lainnya.</p>
+                    <a href="https://harryfolio.my.id/" class="btn btn-secondary" target="_blank" rel="noopener noreferrer">Lihat Full Portfolio</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             PROCESS SECTION
+        ========================================= -->
+        <section id="proses" class="section-padding" style="background-color: var(--color-background);">
+            <div class="container reveal">
+                <div class="grid-2" style="align-items: start;">
+                    <div style="max-width: 500px;">
+                        <span class="text-label">HOW IT WORKS</span>
+                        <h2 class="heading-md">Proses Kerja yang Jelas dan Terstruktur</h2>
+                        <p class="text-lead">Setiap project dimulai dengan memahami kebutuhan dan diakhiri dengan delivery yang sesuai dengan scope yang telah disepakati.</p>
+                    </div>
+                    
+                    <div class="process-list">
+                        <div class="process-item">
+                            <h3 class="heading-sm" style="margin-bottom: 0.25rem;">Konsultasi</h3>
+                            <p>Ceritakan kebutuhan, masalah, atau ide project yang ingin dikembangkan.</p>
+                        </div>
+                        <div class="process-item">
+                            <h3 class="heading-sm" style="margin-bottom: 0.25rem;">Requirement</h3>
+                            <p>Kebutuhan, fitur, scope, timeline, dan estimasi dibahas untuk menentukan solusi yang sesuai.</p>
+                        </div>
+                        <div class="process-item">
+                            <h3 class="heading-sm" style="margin-bottom: 0.25rem;">Development</h3>
+                            <p>Project dikembangkan berdasarkan requirement dan scope yang telah disepakati.</p>
+                        </div>
+                        <div class="process-item">
+                            <h3 class="heading-sm" style="margin-bottom: 0.25rem;">Review</h3>
+                            <p>Hasil pengembangan direview untuk memastikan kesesuaian dengan kebutuhan project.</p>
+                        </div>
+                        <div class="process-item">
+                            <h3 class="heading-sm" style="margin-bottom: 0.25rem;">Delivery</h3>
+                            <p>Project diselesaikan dan diserahkan sesuai scope serta kesepakatan yang telah ditentukan.</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </section>
 
-                    <!-- IT Card 2 -->
-                    <div class="bg-white border border-slate-200 p-8 rounded-3xl hover:border-brand-300 hover:shadow-soft transition-all duration-300 reveal delay-200">
-                        <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 text-2xl mb-5">
-                            <i class="ph-duotone ph-device-mobile"></i>
-                        </div>
-                        <h4 class="text-lg font-bold text-slate-900 mb-2">Aplikasi Mobile (Android & iOS)</h4>
-                        <p class="text-slate-500 text-sm mb-6">Bikin aplikasi beneran yang bisa di-install di HP. Cocok banget buat judul Skripsi anak IT.</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">Flutter</span>
-                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">React Native</span>
-                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">API Ready</span>
-                        </div>
-                        <div class="pt-4 border-t border-slate-100 flex justify-between items-center">
-                            <span class="text-lg font-extrabold text-slate-900">Start Rp XK</span>
-                        </div>
+        <!-- =========================================
+             PRICING / ESTIMATION SECTION
+        ========================================= -->
+        <section class="section-padding" style="background-color: var(--color-surface); border-top: 1px solid var(--color-border); border-bottom: 1px solid var(--color-border);">
+            <div class="container reveal text-center" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <span class="text-label">PROJECT ESTIMATION</span>
+                <h2 class="heading-md">Setiap Project Memiliki Kebutuhan yang Berbeda</h2>
+                <p class="text-lead" style="margin-left: auto; margin-right: auto; margin-bottom: var(--space-md);">Estimasi biaya disesuaikan dengan scope, kompleksitas, fitur, platform, deadline, dan kebutuhan khusus project. <br><span style="font-weight: 600; color: var(--color-text-primary); display: inline-block; margin-top: 0.5rem;">Mulai dari: [PLACEHOLDER: HARGA MULAI]</span></p>
+                <button class="btn btn-primary btn-whatsapp">Minta Estimasi</button>
+            </div>
+        </section>
+
+        <!-- =========================================
+             FAQ SECTION
+        ========================================= -->
+        <section id="faq" class="section-padding" style="background-color: var(--color-surface);">
+            <div class="container reveal">
+                <div class="grid-2" style="align-items: start;">
+                    <div>
+                        <span class="text-label">FAQ</span>
+                        <h2 class="heading-md">Pertanyaan yang Sering Diajukan</h2>
                     </div>
-
-                    <!-- IT Card 3 -->
-                    <div class="sm:col-span-2 bg-gradient-to-r from-brand-50 to-indigo-50 border border-brand-100 p-8 rounded-3xl hover:shadow-soft transition-all duration-300 reveal delay-300 flex flex-col md:flex-row gap-6 items-center">
-                        <div class="flex-shrink-0 w-16 h-16 bg-brand-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg shadow-brand-500/30">
-                            <i class="ph-duotone ph-database"></i>
-                        </div>
-                        <div class="flex-grow text-center md:text-left">
-                            <h4 class="text-xl font-bold text-slate-900 mb-2">Web App / Sistem Informasi (Skala Besar)</h4>
-                            <p class="text-slate-600 text-sm mb-3">Butuh E-Commerce, Sistem Pakar, SPK, ERP, atau sistem kasir lengkap sama Dashboard Admin dan Database? Kita jagonya.</p>
-                            <div class="flex flex-wrap gap-2 justify-center md:justify-start">
-                                <span class="text-[10px] font-bold bg-white border border-brand-200 text-brand-700 px-2 py-1 rounded-md">Laravel</span>
-                                <span class="text-[10px] font-bold bg-white border border-brand-200 text-brand-700 px-2 py-1 rounded-md">React/Vue</span>
-                                <span class="text-[10px] font-bold bg-white border border-brand-200 text-brand-700 px-2 py-1 rounded-md">Node.js</span>
-                                <span class="text-[10px] font-bold bg-white border border-brand-200 text-brand-700 px-2 py-1 rounded-md">MySQL/Postgres</span>
+                    
+                    <div class="faq-list">
+                        <!-- FAQ 1 -->
+                        <div class="faq-item">
+                            <button class="faq-button" aria-expanded="false">
+                                <span class="faq-title">Apakah website dapat dibuat sesuai kebutuhan?</span>
+                                <span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner">
+                                    <p>Ya. Website dapat dirancang dan dikembangkan berdasarkan kebutuhan, tujuan, fitur, dan karakteristik project.</p>
+                                </div>
                             </div>
                         </div>
-                        <div class="flex-shrink-0 text-center md:text-right mt-4 md:mt-0 pt-4 md:pt-0 md:pl-6 border-t md:border-t-0 md:border-l border-brand-200 w-full md:w-auto">
-                            <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Mulai Dari</span>
-                            <span class="block text-2xl font-extrabold text-brand-700 whitespace-nowrap">Rp XK</span>
+
+                        <!-- FAQ 2 -->
+                        <div class="faq-item">
+                            <button class="faq-button" aria-expanded="false">
+                                <span class="faq-title">Apakah Harnad Technologies menyediakan pengembangan aplikasi mobile?</span>
+                                <span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner">
+                                    <p>Ya. Pengembangan aplikasi mobile dapat dilakukan untuk Android, iOS, maupun kebutuhan cross-platform menggunakan Flutter.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 3 -->
+                        <div class="faq-item">
+                            <button class="faq-button" aria-expanded="false">
+                                <span class="faq-title">Apakah bisa membantu project programming?</span>
+                                <span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner">
+                                    <p>Ya. Bantuan dapat mencakup technical assistance, debugging, development support, dokumentasi, integrasi, dan pengembangan fitur sesuai kebutuhan project.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 4 -->
+                        <div class="faq-item">
+                            <button class="faq-button" aria-expanded="false">
+                                <span class="faq-title">Bagaimana proses memulai project?</span>
+                                <span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner">
+                                    <p>Hubungi Harnad Technologies melalui WhatsApp dan jelaskan kebutuhan atau ide project yang ingin dikembangkan. Setelah itu, kebutuhan akan dibahas untuk menentukan scope dan langkah berikutnya.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 5 -->
+                        <div class="faq-item">
+                            <button class="faq-button" aria-expanded="false">
+                                <span class="faq-title">Berapa lama waktu pengerjaan project?</span>
+                                <span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner">
+                                    <p>Timeline bergantung pada scope, kompleksitas, jumlah fitur, platform, dan kebutuhan project. Estimasi akan diberikan setelah requirement dibahas.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- FAQ 6 -->
+                        <div class="faq-item">
+                            <button class="faq-button" aria-expanded="false">
+                                <span class="faq-title">Apakah bisa membantu kebutuhan akademik seperti makalah, PPT, laporan, sempro, dan skripsi?</span>
+                                <span class="faq-icon" aria-hidden="true"></span>
+                            </button>
+                            <div class="faq-content">
+                                <div class="faq-content-inner">
+                                    <p>Tersedia layanan academic assistance yang dapat mencakup bantuan penyusunan, editing, dokumentasi, presentasi, formatting, serta technical assistance. Bentuk bantuan disesuaikan dengan kebutuhan dan tetap memperhatikan tanggung jawab akademik pengguna.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="cara-pesan" class="py-20 bg-white">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
-                <h2 class="text-brand-600 font-bold uppercase tracking-wider text-sm mb-2">Cara Order</h2>
-                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Anti Ribet, Cuma 4 Langkah</h3>
-                <p class="text-slate-600">Ga perlu isi form panjang-panjang, cukup chat admin dan biar sistem kami yang jalan.</p>
-            </div>
-
-            <div class="grid md:grid-cols-4 gap-8 relative">
-                <!-- Connecting Line (Desktop Only) -->
-                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
-
-                <!-- Step 1 -->
-                <div class="relative z-10 flex flex-col items-center text-center reveal">
-                    <div class="w-16 h-16 bg-white border-4 border-brand-50 rounded-full flex items-center justify-center shadow-lg mb-6 relative hover:scale-110 transition-transform">
-                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">1</span>
-                        <i class="ph-fill ph-chat-circle-text text-2xl text-slate-800"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-slate-900 mb-2">Chat Admin</h4>
-                    <p class="text-sm text-slate-500">WA admin kita, kasih tau detail tugasnya, formatnya, dan kapan deadlinenya.</p>
-                </div>
-
-                <!-- Step 2 -->
-                <div class="relative z-10 flex flex-col items-center text-center reveal delay-100">
-                    <div class="w-16 h-16 bg-white border-4 border-brand-50 rounded-full flex items-center justify-center shadow-lg mb-6 relative hover:scale-110 transition-transform">
-                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">2</span>
-                        <i class="ph-fill ph-handshake text-2xl text-slate-800"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-slate-900 mb-2">Deal Harga & DP</h4>
-                    <p class="text-sm text-slate-500">Admin ngasih harga nett. Kalau oke, cukup transfer DP ringan buat tanda jadi.</p>
-                </div>
-
-                <!-- Step 3 -->
-                <div class="relative z-10 flex flex-col items-center text-center reveal delay-200">
-                    <div class="w-16 h-16 bg-white border-4 border-brand-50 rounded-full flex items-center justify-center shadow-lg mb-6 relative hover:scale-110 transition-transform">
-                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">3</span>
-                        <i class="ph-fill ph-keyboard text-2xl text-slate-800"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-slate-900 mb-2">Kita Kerjain</h4>
-                    <p class="text-sm text-slate-500">Tinggal rebahan atau ngopi. Tim kita yang lembur ngerjain tugas lo sampai beres.</p>
-                </div>
-
-                <!-- Step 4 -->
-                <div class="relative z-10 flex flex-col items-center text-center reveal delay-300">
-                    <div class="w-16 h-16 bg-white border-4 border-brand-50 rounded-full flex items-center justify-center shadow-lg mb-6 relative hover:scale-110 transition-transform">
-                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">4</span>
-                        <i class="ph-fill ph-check-square-offset text-2xl text-slate-800"></i>
-                    </div>
-                    <h4 class="font-bold text-lg text-slate-900 mb-2">Pelunasan & File Dikirim</h4>
-                    <p class="text-sm text-slate-500">File final dikirim setelah lunas. Ada yang salah/dosen minta ganti? Tenang, ada garansi revisi.</p>
+        <!-- =========================================
+             FINAL CTA SECTION
+        ========================================= -->
+        <section class="section-padding" style="background-color: var(--color-background);">
+            <div class="container reveal text-center" style="display: flex; flex-direction: column; align-items: center; text-align: center;">
+                <span class="text-label">LET'S WORK TOGETHER</span>
+                <h2 class="heading-md">Punya Project atau Kebutuhan yang Ingin Didiskusikan?</h2>
+                <p class="text-lead" style="margin-left: auto; margin-right: auto;">Ceritakan kebutuhan Anda kepada Harnad Technologies. Kami akan membantu memahami kebutuhan tersebut dan menentukan solusi yang paling sesuai.</p>
+                <div class="hero-actions" style="justify-content: center;">
+                    <button class="btn btn-primary btn-whatsapp">Konsultasi via WhatsApp</button>
+                    <a href="#project" class="btn btn-secondary">Lihat Portfolio</a>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <section id="faq" class="py-20 bg-slate-50">
-        <div class="container mx-auto px-6 max-w-4xl">
-            <div class="text-center mb-12 reveal">
-                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Pertanyaan Seputar Layanan Kami</h2>
-            </div>
-
-            <div class="space-y-4 reveal">
-                <!-- FAQ Item 1 -->
-                <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-slate-800">Apakah kerahasiaan data saya terjamin?</span>
-                        <i class="ph-bold ph-caret-down text-slate-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
-                        <p class="px-6 pb-5 text-slate-600 text-sm leading-relaxed">Sangat terjamin. Kami memiliki kebijakan privasi yang ketat. File tugas dan identitas Anda tidak akan pernah dipublikasikan atau diberikan kepada pihak ketiga.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-slate-800">Bagaimana sistem revisinya?</span>
-                        <i class="ph-bold ph-caret-down text-slate-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
-                        <p class="px-6 pb-5 text-slate-600 text-sm leading-relaxed">Kami memberikan garansi revisi gratis sesuai kesepakatan awal, selama revisi tersebut tidak melenceng dari brief/materi yang sudah disepakati di awal pemesanan.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-slate-800">Apakah aman dari Plagiasi (Turnitin)?</span>
-                        <i class="ph-bold ph-caret-down text-slate-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
-                        <p class="px-6 pb-5 text-slate-600 text-sm leading-relaxed">Tentu. Semua pekerjaan tulis (Makalah, Skripsi, Jurnal) dikerjakan secara orisinal dari awal (from scratch). Kami juga melampirkan hasil cek Turnitin sebagai bukti.</p>
-                    </div>
+    <!-- =========================================
+         FOOTER
+    ========================================= -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div>
+                    <div class="footer-brand">HARNAD TECHNOLOGIES</div>
+                    <div class="footer-descriptor">Digital Solutions & Academic Assistance</div>
+                    <p style="font-size: 0.9375rem; color: var(--color-text-secondary); max-width: 400px;">Menyediakan layanan academic assistance, web development, mobile development, dan technical assistance untuk kebutuhan individu, mahasiswa, maupun bisnis.</p>
                 </div>
                 
-                <!-- FAQ Item 4 -->
-                <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
-                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
-                        <span class="font-bold text-slate-800">Berapa lama proses pengerjaan aplikasi/web?</span>
-                        <i class="ph-bold ph-caret-down text-slate-400 transition-transform duration-300"></i>
-                    </button>
-                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
-                        <p class="px-6 pb-5 text-slate-600 text-sm leading-relaxed">Waktu pengerjaan bergantung pada kompleksitas fitur aplikasi. Untuk landing page sederhana biasanya 2-5 hari. Untuk Sistem Informasi/Tugas Akhir IT kompleks sekitar 2-4 minggu. Semua timeline akan disepakati di awal.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="kontak" class="py-20 relative overflow-hidden">
-        <div class="absolute inset-0 bg-brand-900"></div>
-        <!-- Abstract Bg Pattern -->
-        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
-        
-        <div class="container mx-auto px-6 max-w-5xl relative z-10 text-center reveal">
-            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Udah Mentok? Jangan Dipaksain!</h2>
-            <p class="text-brand-100 text-lg mb-10 max-w-2xl mx-auto">Konsultasiin aja dulu mumpung gratis. Daripada dimarahin dospem atau nilai hancur, mending amankan tugas lo bareng Harnad-Technology.</p>
-            
-            <a href="https://wa.me/6281234567890" target="_blank" class="inline-flex justify-center items-center gap-3 bg-green-500 hover:bg-green-400 text-white px-8 py-5 rounded-full font-bold text-lg transition-all duration-300 shadow-lg shadow-green-500/40 hover:-translate-y-1 hover:scale-105">
-                <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
-                Chat Admin (Fast Respon)
-            </a>
-            <p class="text-brand-200 text-sm mt-4">Aktif 24/7 Nemenin Begadang Lo</p>
-        </div>
-    </section>
-
-    <footer class="bg-slate-950 pt-16 pb-8 border-t border-slate-900">
-        <div class="container mx-auto px-6 max-w-7xl">
-            <div class="grid md:grid-cols-12 gap-8 mb-12 text-slate-400">
-                <!-- Brand Info -->
-                <div class="md:col-span-5">
-                    <a href="#" class="flex items-center gap-2 mb-4">
-                        <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
-                            TP
-                        </div>
-                        <span class="text-xl font-extrabold tracking-tight text-white">Tugas<span class="text-brand-500">Pro</span></span>
-                    </a>
-                    <p class="text-sm leading-relaxed mb-6 pr-4">Partner terpercaya Anda untuk urusan akademik dan IT Development. Profesional, Cepat, dan Garansi memuaskan.</p>
-                    <div class="flex gap-4">
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="ph-fill ph-instagram-logo"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="ph-fill ph-tiktok-logo"></i></a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="ph-fill ph-facebook-logo"></i></a>
+                <div>
+                    <h4>Navigation</h4>
+                    <div class="footer-links">
+                        <a href="#">Beranda</a>
+                        <a href="#layanan">Layanan</a>
+                        <a href="#project">Project</a>
+                        <a href="#faq">FAQ</a>
+                        <button class="btn-whatsapp" style="text-align: left; padding: 0; color: inherit; font-weight: inherit; font-size: 0.9375rem; border: none; background: none; cursor: pointer; transition: color var(--transition-fast);">Kontak</button>
                     </div>
                 </div>
 
-                <!-- Quick Links -->
-                <div class="md:col-span-3 md:col-start-7">
-                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Layanan Utama</h4>
-                    <ul class="space-y-2 text-sm">
-                        <li><a href="#layanan" class="hover:text-brand-400 transition-colors">Makalah & Jurnal</a></li>
-                        <li><a href="#layanan" class="hover:text-brand-400 transition-colors">Tugas Akhir / Skripsi</a></li>
-                        <li><a href="#layanan" class="hover:text-brand-400 transition-colors">Web Development</a></li>
-                        <li><a href="#layanan" class="hover:text-brand-400 transition-colors">Mobile App (Flutter)</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contact -->
-                <div class="md:col-span-3">
-                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Kontak</h4>
-                    <ul class="space-y-3 text-sm">
-                        <li class="flex items-center gap-2"><i class="ph-fill ph-whatsapp-logo text-green-500 text-lg"></i> 0812-9180-4882</li>
-                        <li class="flex items-center gap-2"><i class="ph-fill ph-envelope-simple text-brand-500 text-lg"></i> harnadtechno@gmail.com</li>
-                        <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-red-500 text-lg"></i> Tangerang, Indonesia</li>
-                    </ul>
+                <div>
+                    <h4>Connect</h4>
+                    <div class="footer-links">
+                        <a href="https://harryfolio.my.id/" target="_blank" rel="noopener noreferrer">Harryfolio</a>
+                        <a href="[PLACEHOLDER: GITHUB URL]" target="_blank" rel="noopener noreferrer">GitHub</a>
+                        <a href="[PLACEHOLDER: LINKEDIN URL]" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+                        <a href="[PLACEHOLDER: INSTAGRAM URL]" target="_blank" rel="noopener noreferrer">Instagram</a>
+                        <button class="btn-whatsapp" style="text-align: left; padding: 0; color: inherit; font-weight: inherit; font-size: 0.9375rem; border: none; background: none; cursor: pointer; transition: color var(--transition-fast);">WhatsApp</button>
+                    </div>
                 </div>
             </div>
             
-            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-                <p>&copy; 2026 Harnad-Technology. All rights reserved.</p>
-                <div class="flex gap-4">
-                    <a href="#" class="hover:text-white">Privacy Policy</a>
-                    <a href="#" class="hover:text-white">Terms of Service</a>
-                </div>
+            <div class="footer-bottom">
+                <span>&copy; <span id="currentYear"></span> Harnad Technologies. All rights reserved.</span>
             </div>
         </div>
     </footer>
 
+    <!-- =========================================
+         JAVASCRIPT ARCHITECTURE
+    ========================================= -->
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Navbar Scroll Effect
-            const navbar = document.getElementById('navbar');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('glass-nav', 'py-3');
-                    navbar.classList.remove('bg-transparent', 'py-4');
-                } else {
-                    navbar.classList.remove('glass-nav', 'py-3');
-                    navbar.classList.add('bg-transparent', 'py-4');
-                }
-            });
+        (function() {
+            'use strict';
 
-            // Mobile Menu Toggle
-            const mobileBtn = document.getElementById('mobile-menu-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            const mobileLinks = document.querySelectorAll('.mobile-link');
-            const mobileIcon = mobileBtn.querySelector('i');
-
-            function toggleMenu() {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('flex');
-                if(mobileMenu.classList.contains('hidden')){
-                    mobileIcon.classList.remove('ph-x');
-                    mobileIcon.classList.add('ph-list');
-                } else {
-                    mobileIcon.classList.remove('ph-list');
-                    mobileIcon.classList.add('ph-x');
-                }
-            }
-
-            mobileBtn.addEventListener('click', toggleMenu);
-            mobileLinks.forEach(link => {
-                link.addEventListener('click', toggleMenu);
-            });
-
-            // FAQ Accordion Logic
-            const faqBtns = document.querySelectorAll('.faq-btn');
-            
-            faqBtns.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const content = btn.nextElementSibling;
-                    const icon = btn.querySelector('i');
-                    const parent = btn.parentElement;
-
-                    // Close all other FAQs
-                    faqBtns.forEach(otherBtn => {
-                        if (otherBtn !== btn) {
-                            otherBtn.nextElementSibling.style.maxHeight = null;
-                            otherBtn.querySelector('i').classList.remove('rotate-180');
-                            otherBtn.parentElement.classList.remove('border-brand-300', 'shadow-soft');
-                        }
-                    });
-
-                    // Toggle current FAQ
-                    if (content.style.maxHeight) {
-                        content.style.maxHeight = null;
-                        icon.classList.remove('rotate-180');
-                        parent.classList.remove('border-brand-300', 'shadow-soft');
-                    } else {
-                        content.style.maxHeight = content.scrollHeight + "px";
-                        icon.classList.add('rotate-180');
-                        parent.classList.add('border-brand-300', 'shadow-soft');
-                    }
-                });
-            });
-
-            // Intersection Observer for Scroll Reveal Animations
-            const revealElements = document.querySelectorAll('.reveal');
-            
-            const revealOptions = {
-                threshold: 0.15,
-                rootMargin: "0px 0px -50px 0px"
+            /* =========================================
+               1. CONFIGURATION
+            ========================================= */
+            const SITE_CONFIG = {
+                whatsappNumber: "[PLACEHOLDER: NOMOR WHATSAPP]", // Format: 628xxxxxxxxxx
+                whatsappMessage: "Halo Harnad Technologies, saya ingin berkonsultasi mengenai kebutuhan project saya."
             };
 
-            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
-                entries.forEach(entry => {
-                    if (!entry.isIntersecting) return;
-                    entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Stop observing once revealed
-                });
-            }, revealOptions);
+            /* =========================================
+               2. DOM REFERENCES
+            ========================================= */
+            const DOM = {
+                header: document.getElementById('header'),
+                mobileBtn: document.getElementById('mobileMenuBtn'),
+                mobileNav: document.getElementById('mobileNav'),
+                mobileLinks: document.querySelectorAll('.mobile-link'),
+                faqButtons: document.querySelectorAll('.faq-button'),
+                revealElements: document.querySelectorAll('.reveal'),
+                whatsappBtns: document.querySelectorAll('.btn-whatsapp'),
+                yearSpan: document.getElementById('currentYear')
+            };
 
-            revealElements.forEach(el => {
-                revealOnScroll.observe(el);
+            /* =========================================
+               3. UTILITY FUNCTIONS
+            ========================================= */
+            const openWhatsApp = () => {
+                const encodedMessage = encodeURIComponent(SITE_CONFIG.whatsappMessage);
+                const url = `https://wa.me/${SITE_CONFIG.whatsappNumber}?text=${encodedMessage}`;
+                window.open(url, '_blank', 'noopener,noreferrer');
+            };
+
+            /* =========================================
+               4. MOBILE NAVIGATION
+            ========================================= */
+            const toggleMobileMenu = () => {
+                const isExpanded = DOM.mobileBtn.getAttribute('aria-expanded') === 'true';
+                DOM.mobileBtn.setAttribute('aria-expanded', !isExpanded);
+                DOM.mobileNav.classList.toggle('active');
+                
+                // Toggle icon animation (hamburger to cross logic)
+                const svg = DOM.mobileBtn.querySelector('svg');
+                if (!isExpanded) {
+                    svg.innerHTML = `
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    `;
+                } else {
+                    svg.innerHTML = `
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    `;
+                }
+            };
+
+            const closeMobileMenu = () => {
+                DOM.mobileBtn.setAttribute('aria-expanded', 'false');
+                DOM.mobileNav.classList.remove('active');
+                const svg = DOM.mobileBtn.querySelector('svg');
+                svg.innerHTML = `
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                `;
+            };
+
+            /* =========================================
+               5. FAQ ACCORDION
+            ========================================= */
+            const handleFAQToggle = (e) => {
+                const button = e.currentTarget;
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+                
+                // Close all other FAQs (Optional, but cleaner)
+                DOM.faqButtons.forEach(btn => {
+                    if (btn !== button) {
+                        btn.setAttribute('aria-expanded', 'false');
+                    }
+                });
+
+                button.setAttribute('aria-expanded', !isExpanded);
+            };
+
+            /* =========================================
+               6. SCROLL STATE & REVEAL
+            ========================================= */
+            const handleHeaderScroll = () => {
+                if (window.scrollY > 10) {
+                    DOM.header.classList.add('scrolled');
+                } else {
+                    DOM.header.classList.remove('scrolled');
+                }
+            };
+
+            // Intersection Observer for scroll reveal
+            const revealObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        observer.unobserve(entry.target); // Only animate once
+                    }
+                });
+            }, {
+                root: null,
+                threshold: 0.1, // Trigger when 10% visible
+                rootMargin: "0px 0px -50px 0px" // Slightly before it hits the bottom
             });
-        });
+
+            /* =========================================
+               7. INITIALIZATION & EVENT LISTENERS
+            ========================================= */
+            const init = () => {
+                // Set Current Year
+                if (DOM.yearSpan) {
+                    DOM.yearSpan.textContent = new Date().getFullYear();
+                }
+
+                // Event Listeners
+                if (DOM.mobileBtn) {
+                    DOM.mobileBtn.addEventListener('click', toggleMobileMenu);
+                }
+
+                DOM.mobileLinks.forEach(link => {
+                    link.addEventListener('click', closeMobileMenu);
+                });
+
+                DOM.faqButtons.forEach(btn => {
+                    btn.addEventListener('click', handleFAQToggle);
+                });
+
+                DOM.whatsappBtns.forEach(btn => {
+                    btn.addEventListener('click', openWhatsApp);
+                });
+
+                window.addEventListener('scroll', handleHeaderScroll, { passive: true });
+                
+                // Check initial scroll position
+                handleHeaderScroll();
+
+                // Initialize Observer
+                DOM.revealElements.forEach(el => {
+                    revealObserver.observe(el);
+                });
+            };
+
+            // Run initialization when DOM is ready
+            document.addEventListener('DOMContentLoaded', init);
+            
+        })();
     </script>
 </body>
 </html>
