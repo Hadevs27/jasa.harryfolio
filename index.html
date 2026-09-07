@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harnad Technology - Solusi Tugas Akademik & IT Development Terpercaya</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Jasa joki tugas akademik (Makalah, Skripsi, Jurnal) dan pembuatan aplikasi IT (Web & Mobile) profesional, cepat, dan anti plagiasi.">
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Phosphor Icons (Modern & Clean Icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Tailwind CSS (Framework) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#eff6ff',
+                            100: '#dbeafe',
+                            500: '#3b82f6',
+                            600: '#2563eb',
+                            700: '#1d4ed8',
+                            900: '#1e3a8a',
+                            950: '#172554',
+                        },
+                        accent: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    boxShadow: {
+                        'soft': '0 10px 40px -10px rgba(0,0,0,0.05)',
+                        'glow': '0 0 20px rgba(59, 130, 246, 0.5)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fafafa;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #1d4ed8, #3b82f6);
+        }
+
+        .blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body class="text-slate-800 antialiased overflow-x-hidden relative">
+
+    <!-- Background Decorative Blobs -->
+    <div class="blob bg-brand-200 w-96 h-96 rounded-full top-[-10%] left-[-10%]"></div>
+    <div class="blob bg-blue-200 w-96 h-96 rounded-full top-[20%] right-[-10%]"></div>
+
+    <header id="navbar" class="fixed w-full top-0 z-50 transition-all duration-300 bg-transparent py-4">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 bg-brand-600 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-brand-600/30 shadow-lg group-hover:scale-105 transition-transform">
+                        TP
+                    </div>
+                    <span class="text-2xl font-extrabold tracking-tight text-slate-900 group-hover:text-brand-600 transition-colors">Tugas<span class="text-brand-600">Pro</span></span>
+                </a>
+
+                <!-- Desktop Menu -->
+                <nav class="hidden md:flex items-center gap-8 font-medium text-slate-600">
+                    <a href="#layanan" class="hover:text-brand-600 transition-colors">Layanan Kami</a>
+                    <a href="#keunggulan" class="hover:text-brand-600 transition-colors">Kenapa Kami?</a>
+                    <a href="#cara-pesan" class="hover:text-brand-600 transition-colors">Cara Order</a>
+                    <a href="#faq" class="hover:text-brand-600 transition-colors">FAQ</a>
+                </nav>
+
+                <!-- CTA & Mobile Toggle -->
+                <div class="flex items-center gap-4">
+                    <a href="#kontak" class="hidden md:flex items-center gap-2 bg-slate-900 hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-semibold transition-all duration-300 shadow-lg hover:shadow-brand-500/30 hover:-translate-y-0.5">
+                        Tanya-tanya Dulu <i class="ph ph-whatsapp-logo font-bold"></i>
+                    </a>
+                    
+                    <!-- Mobile Menu Button -->
+                    <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-brand-600 text-3xl focus:outline-none">
+                        <i class="ph ph-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-white shadow-xl border-t border-slate-100 flex-col py-4 px-6 gap-4 md:hidden">
+            <a href="#layanan" class="mobile-link text-slate-700 font-medium hover:text-brand-600">Layanan Kami</a>
+            <a href="#keunggulan" class="mobile-link text-slate-700 font-medium hover:text-brand-600">Kenapa Kami?</a>
+            <a href="#cara-pesan" class="mobile-link text-slate-700 font-medium hover:text-brand-600">Cara Order</a>
+            <a href="#faq" class="mobile-link text-slate-700 font-medium hover:text-brand-600">FAQ</a>
+            <a href="#kontak" class="w-full text-center bg-brand-600 text-white px-6 py-3 rounded-xl font-semibold mt-2">Tanya-tanya Dulu</a>
+        </div>
+    </header>
+
+    <section class="pt-40 pb-20 lg:pt-48 lg:pb-32 relative overflow-hidden">
+        <div class="container mx-auto px-6 max-w-7xl relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                <!-- Text Content -->
+                <div class="max-w-2xl reveal">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 border border-blue-100 text-brand-600 font-semibold text-sm mb-6">
+                        <span class="relative flex h-3 w-3">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-600"></span>
+                        </span>
+                        Beresin Tugas Ga Pake Ribet
+                    </div>
+                    <h1 class="text-5xl lg:text-6xl font-extrabold leading-[1.15] tracking-tight mb-6 text-slate-900">
+                        Deadline Mepet? Pusing Ngoding? <br>
+                        <span class="text-gradient">Biar Kami Yang Beresin.</span>
+                    </h1>
+                    <p class="text-lg text-slate-600 mb-8 leading-relaxed">
+                        Fokus aja sama kesibukan lo yang lain. Urusan ngetik Makalah, nyusun Skripsi, sampai bikin Aplikasi Web & Mobile serahin ke tim expert kami. Dijamin aman, anti-plagiat, dan kelar tepat waktu.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#layanan" class="flex justify-center items-center gap-2 bg-brand-600 hover:bg-brand-700 text-white px-8 py-4 rounded-full font-bold transition-all duration-300 shadow-lg shadow-brand-500/30 hover:-translate-y-1">
+                            Cek Layanan & Harga
+                        </a>
+                        <a href="https://wa.me/6281234567890" target="_blank" class="flex justify-center items-center gap-2 bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 px-8 py-4 rounded-full font-bold transition-all duration-300 hover:shadow-soft hover:-translate-y-1">
+                            <i class="ph-fill ph-whatsapp-logo text-green-500 text-xl"></i>
+                            Konsultasi via WA (Gratis)
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Indicators -->
+                    <div class="mt-10 flex items-center gap-6 text-sm font-medium text-slate-500 flex-wrap">
+                        <div class="flex items-center gap-2"><i class="ph-fill ph-shield-check text-brand-500 text-lg"></i> Privasi 100% Aman</div>
+                        <div class="flex items-center gap-2"><i class="ph-fill ph-arrow-u-up-left text-brand-500 text-lg"></i> Revisi Sampai ACC</div>
+                        <div class="flex items-center gap-2"><i class="ph-fill ph-lightning text-brand-500 text-lg"></i> Bisa Express (Sistem SKS)</div>
+                    </div>
+                </div>
+
+                <!-- Hero Illustration/Visual -->
+                <div class="relative lg:ml-auto w-full max-w-lg reveal delay-200">
+                    <div class="relative bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 z-10 transform -rotate-2 hover:rotate-0 transition-transform duration-500">
+                        <!-- Mockup Header -->
+                        <div class="flex items-center justify-between mb-6 border-b border-slate-100 pb-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-12 h-12 bg-indigo-50 rounded-full flex items-center justify-center text-brand-600">
+                                    <i class="ph-fill ph-file-code text-2xl"></i>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-900">Progres Pengerjaan</h3>
+                                    <p class="text-xs text-slate-500">Skripsi & Web App Klien</p>
+                                </div>
+                            </div>
+                            <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">On Schedule</span>
+                        </div>
+                        
+                        <!-- Mockup Body (Skeleton lines) -->
+                        <div class="space-y-4">
+                            <div class="w-full h-3 bg-slate-100 rounded-full overflow-hidden">
+                                <div class="w-3/4 h-full bg-brand-500 rounded-full"></div>
+                            </div>
+                            <p class="text-xs text-slate-400 text-right">Progress Update - 75%</p>
+                            
+                            <div class="grid grid-cols-2 gap-4 mt-6">
+                                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                    <i class="ph-duotone ph-book-open text-3xl text-brand-500 mb-2"></i>
+                                    <h4 class="font-bold text-sm text-slate-800">Bab 4 Kelar</h4>
+                                    <p class="text-xs text-slate-500 mt-1">Turnitin < 15%</p>
+                                </div>
+                                <div class="bg-slate-50 p-4 rounded-2xl border border-slate-100">
+                                    <i class="ph-duotone ph-bug-droid text-3xl text-brand-500 mb-2"></i>
+                                    <h4 class="font-bold text-sm text-slate-800">UAT Passed</h4>
+                                    <p class="text-xs text-slate-500 mt-1">Aplikasi Ready</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Decorative background card -->
+                    <div class="absolute inset-0 bg-gradient-to-br from-brand-600 to-indigo-800 rounded-3xl transform rotate-3 translate-x-4 translate-y-4 -z-10 shadow-xl opacity-80"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="layanan" class="py-20 bg-white relative">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-brand-600 font-bold uppercase tracking-wider text-sm mb-2">Jasa Akademik</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Urusan Ketik-Mengetik, Biar Kami Ahlinya</h3>
+                <p class="text-slate-600">Nggak usah begadang lagi. Tim penulis kami siap ngerjain tugas lo sesuai pedoman kampus, lolos uji Turnitin, dan pastinya dapet nilai maksimal.</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Academic Card 1 -->
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-soft hover:bg-white hover:-translate-y-1 transition-all duration-300 group reveal">
+                    <div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center text-brand-600 text-3xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                        <i class="ph-duotone ph-article"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Makalah & Essay</h4>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Dari tugas harian sampai UTS/UAS. Ditulis rapi sesuai EYD, referensi jurnal terbaru, no copy-paste.</p>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center mt-auto">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
+                        <span class="text-lg font-extrabold text-slate-900">Rp XK</span>
+                    </div>
+                </div>
+
+                <!-- Academic Card 2 -->
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-soft hover:bg-white hover:-translate-y-1 transition-all duration-300 group reveal delay-100">
+                    <div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center text-brand-600 text-3xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                        <i class="ph-duotone ph-flask"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Laporan Praktikum (Laprak)</h4>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Nggak sempet ngolah data? Kita buatin laprak komplit sama perhitungan, grafik, dan pembahasannya.</p>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center mt-auto">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
+                        <span class="text-lg font-extrabold text-slate-900">Rp XK</span>
+                    </div>
+                </div>
+
+                <!-- Academic Card 3 -->
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-soft hover:bg-white hover:-translate-y-1 transition-all duration-300 group reveal delay-200">
+                    <div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center text-brand-600 text-3xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                        <i class="ph-duotone ph-books"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Jurnal Ilmiah / Artikel</h4>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Bantu nulis, translate, atau re-write artikel buat syarat kelulusan/publikasi Sinta & jurnal nasional.</p>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center mt-auto">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
+                        <span class="text-lg font-extrabold text-slate-900">Rp XK</span>
+                    </div>
+                </div>
+
+                <!-- Academic Card 4 -->
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-soft hover:bg-white hover:-translate-y-1 transition-all duration-300 group reveal">
+                    <div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center text-brand-600 text-3xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                        <i class="ph-duotone ph-briefcase"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Laporan Kerja Praktik / Magang</h4>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Magang udah capek, laporan serahin ke kita. Mulai dari bab pendahuluan sampai kesimpulan & saran.</p>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center mt-auto">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
+                        <span class="text-lg font-extrabold text-slate-900">Rp XK</span>
+                    </div>
+                </div>
+
+                <!-- Academic Card 5 -->
+                <div class="bg-slate-50 border border-slate-100 p-8 rounded-3xl hover:shadow-soft hover:bg-white hover:-translate-y-1 transition-all duration-300 group reveal delay-100">
+                    <div class="w-14 h-14 bg-white shadow-sm border border-slate-100 rounded-2xl flex items-center justify-center text-brand-600 text-3xl mb-6 group-hover:bg-brand-600 group-hover:text-white transition-colors">
+                        <i class="ph-duotone ph-presentation-chart"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-slate-900 mb-3">Seminar Proposal (Sempro)</h4>
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">Kita buatin draft proposal Bab 1-3 sekalian sama desain slide PPT-nya biar dosen penguji terkesima.</p>
+                    <div class="pt-4 border-t border-slate-200 flex justify-between items-center mt-auto">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
+                        <span class="text-lg font-extrabold text-slate-900">Rp XK</span>
+                    </div>
+                </div>
+
+                <!-- Academic Card 6 -->
+                <div class="relative bg-gradient-to-br from-slate-900 to-brand-950 border border-slate-800 p-8 rounded-3xl hover:-translate-y-1 transition-all duration-300 shadow-xl group reveal delay-200">
+                    <div class="absolute top-0 right-0 p-4">
+                        <span class="bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-md">Paling Laris🔥</span>
+                    </div>
+                    <div class="w-14 h-14 bg-white/10 border border-white/20 rounded-2xl flex items-center justify-center text-accent-500 text-3xl mb-6 backdrop-blur-sm">
+                        <i class="ph-duotone ph-graduation-cap"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-white mb-3">Skripsi / Tugas Akhir</h4>
+                    <p class="text-slate-300 text-sm mb-6 leading-relaxed">Mentok di bab 4? Dosen revisi mulu? Kita bantu full bab 1-5, olah data SPSS/Python, garansi sampai lulus.</p>
+                    <div class="pt-4 border-t border-slate-700/50 flex justify-between items-center mt-auto">
+                        <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Mulai Dari</span>
+                        <span class="text-lg font-extrabold text-white">Rp XK</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-slate-50 border-t border-slate-200">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="flex flex-col lg:flex-row gap-12 items-center">
+                <!-- IT Section Text Content -->
+                <div class="lg:w-1/3 reveal">
+                    <h2 class="text-brand-600 font-bold uppercase tracking-wider text-sm mb-2">IT & Software Studio</h2>
+                    <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-6">Bikin Aplikasi Ga Perlu Begadang</h3>
+                    <p class="text-slate-600 mb-8 leading-relaxed">
+                        Tugas Akhir suruh bikin aplikasi tapi error terus? Atau butuh website buat bisnis? Programmer senior kami yang akan ngodingin buat lo. Kode rapi, minim bug, dan gampang di-maintenance.
+                    </p>
+                    <ul class="space-y-4 mb-8">
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-green-100 text-green-600 rounded-full p-1"><i class="ph-bold ph-check text-sm"></i></div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 text-sm">Tech Stack Kekinian</h5>
+                                <p class="text-xs text-slate-500">React, Laravel, Vue, Flutter, Node.js.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <div class="mt-1 bg-green-100 text-green-600 rounded-full p-1"><i class="ph-bold ph-check text-sm"></i></div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 text-sm">Include Source Code</h5>
+                                <p class="text-xs text-slate-500">Kita kasih full akses code + diajarin cara running-nya.</p>
+                            </div>
+                        </li>
+                    </ul>
+                    <a href="#kontak" class="inline-flex justify-center items-center gap-2 bg-slate-900 hover:bg-brand-600 text-white px-6 py-3 rounded-xl font-bold transition-colors">
+                        Ngobrolin Project IT
+                    </a>
+                </div>
+
+                <!-- IT Services Cards Grid -->
+                <div class="lg:w-2/3 grid sm:grid-cols-2 gap-6 w-full">
+                    <!-- IT Card 1 -->
+                    <div class="bg-white border border-slate-200 p-8 rounded-3xl hover:border-brand-300 hover:shadow-soft transition-all duration-300 reveal delay-100">
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center text-brand-600 text-2xl mb-5">
+                            <i class="ph-duotone ph-desktop"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Web Landing Page / Company Profile</h4>
+                        <p class="text-slate-500 text-sm mb-6">Website cakep buat nampilin profil bisnis, portofolio, atau tugas kampus. Tampil responsif di HP.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">HTML/Tailwind</span>
+                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">React/Next.js</span>
+                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">WordPress</span>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-between items-center">
+                            <span class="text-lg font-extrabold text-slate-900">Start Rp XK</span>
+                        </div>
+                    </div>
+
+                    <!-- IT Card 2 -->
+                    <div class="bg-white border border-slate-200 p-8 rounded-3xl hover:border-brand-300 hover:shadow-soft transition-all duration-300 reveal delay-200">
+                        <div class="w-12 h-12 bg-indigo-50 rounded-xl flex items-center justify-center text-indigo-600 text-2xl mb-5">
+                            <i class="ph-duotone ph-device-mobile"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-slate-900 mb-2">Aplikasi Mobile (Android & iOS)</h4>
+                        <p class="text-slate-500 text-sm mb-6">Bikin aplikasi beneran yang bisa di-install di HP. Cocok banget buat judul Skripsi anak IT.</p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">Flutter</span>
+                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">React Native</span>
+                            <span class="text-[10px] font-bold bg-slate-100 text-slate-600 px-2 py-1 rounded-md">API Ready</span>
+                        </div>
+                        <div class="pt-4 border-t border-slate-100 flex justify-between items-center">
+                            <span class="text-lg font-extrabold text-slate-900">Start Rp XK</span>
+                        </div>
+                    </div>
+
+                    <!-- IT Card 3 -->
+                    <div class="sm:col-span-2 bg-gradient-to-r from-brand-50 to-indigo-50 border border-brand-100 p-8 rounded-3xl hover:shadow-soft transition-all duration-300 reveal delay-300 flex flex-col md:flex-row gap-6 items-center">
+                        <div class="flex-shrink-0 w-16 h-16 bg-brand-600 rounded-2xl flex items-center justify-center text-white text-3xl shadow-lg shadow-brand-500/30">
+                            <i class="ph-duotone ph-database"></i>
+                        </div>
+                        <div class="flex-grow text-center md:text-left">
+                            <h4 class="text-xl font-bold text-slate-900 mb-2">Web App / Sistem Informasi (Skala Besar)</h4>
+                            <p class="text-slate-600 text-sm mb-3">Butuh E-Commerce, Sistem Pakar, SPK, ERP, atau sistem kasir lengkap sama Dashboard Admin dan Database? Kita jagonya.</p>
+                            <div class="flex flex-wrap gap-2 justify-center md:justify-start">
+                                <span class="text-[10px] font-bold bg-white border border-brand-200 text-brand-700 px-2 py-1 rounded-md">Laravel</span>
+                                <span class="text-[10px] font-bold bg-white border border-brand-200 text-brand-700 px-2 py-1 rounded-md">React/Vue</span>
+                                <span class="text-[10px] font-bold bg-white border border-brand-200 text-brand-700 px-2 py-1 rounded-md">Node.js</span>
+                                <span class="text-[10px] font-bold bg-white border border-brand-200 text-brand-700 px-2 py-1 rounded-md">MySQL/Postgres</span>
+                            </div>
+                        </div>
+                        <div class="flex-shrink-0 text-center md:text-right mt-4 md:mt-0 pt-4 md:pt-0 md:pl-6 border-t md:border-t-0 md:border-l border-brand-200 w-full md:w-auto">
+                            <span class="block text-xs font-bold text-slate-500 uppercase tracking-wider mb-1">Mulai Dari</span>
+                            <span class="block text-2xl font-extrabold text-brand-700 whitespace-nowrap">Rp XK</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cara-pesan" class="py-20 bg-white">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+                <h2 class="text-brand-600 font-bold uppercase tracking-wider text-sm mb-2">Cara Order</h2>
+                <h3 class="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">Anti Ribet, Cuma 4 Langkah</h3>
+                <p class="text-slate-600">Ga perlu isi form panjang-panjang, cukup chat admin dan biar sistem kami yang jalan.</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-8 relative">
+                <!-- Connecting Line (Desktop Only) -->
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-slate-100 -translate-y-1/2 z-0"></div>
+
+                <!-- Step 1 -->
+                <div class="relative z-10 flex flex-col items-center text-center reveal">
+                    <div class="w-16 h-16 bg-white border-4 border-brand-50 rounded-full flex items-center justify-center shadow-lg mb-6 relative hover:scale-110 transition-transform">
+                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">1</span>
+                        <i class="ph-fill ph-chat-circle-text text-2xl text-slate-800"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-slate-900 mb-2">Chat Admin</h4>
+                    <p class="text-sm text-slate-500">WA admin kita, kasih tau detail tugasnya, formatnya, dan kapan deadlinenya.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="relative z-10 flex flex-col items-center text-center reveal delay-100">
+                    <div class="w-16 h-16 bg-white border-4 border-brand-50 rounded-full flex items-center justify-center shadow-lg mb-6 relative hover:scale-110 transition-transform">
+                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">2</span>
+                        <i class="ph-fill ph-handshake text-2xl text-slate-800"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-slate-900 mb-2">Deal Harga & DP</h4>
+                    <p class="text-sm text-slate-500">Admin ngasih harga nett. Kalau oke, cukup transfer DP ringan buat tanda jadi.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="relative z-10 flex flex-col items-center text-center reveal delay-200">
+                    <div class="w-16 h-16 bg-white border-4 border-brand-50 rounded-full flex items-center justify-center shadow-lg mb-6 relative hover:scale-110 transition-transform">
+                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">3</span>
+                        <i class="ph-fill ph-keyboard text-2xl text-slate-800"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-slate-900 mb-2">Kita Kerjain</h4>
+                    <p class="text-sm text-slate-500">Tinggal rebahan atau ngopi. Tim kita yang lembur ngerjain tugas lo sampai beres.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="relative z-10 flex flex-col items-center text-center reveal delay-300">
+                    <div class="w-16 h-16 bg-white border-4 border-brand-50 rounded-full flex items-center justify-center shadow-lg mb-6 relative hover:scale-110 transition-transform">
+                        <span class="absolute -top-2 -right-2 w-6 h-6 bg-brand-600 text-white rounded-full text-xs font-bold flex items-center justify-center">4</span>
+                        <i class="ph-fill ph-check-square-offset text-2xl text-slate-800"></i>
+                    </div>
+                    <h4 class="font-bold text-lg text-slate-900 mb-2">Pelunasan & File Dikirim</h4>
+                    <p class="text-sm text-slate-500">File final dikirim setelah lunas. Ada yang salah/dosen minta ganti? Tenang, ada garansi revisi.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" class="py-20 bg-slate-50">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="text-center mb-12 reveal">
+                <h2 class="text-3xl font-extrabold text-slate-900 mb-4">Pertanyaan Seputar Layanan Kami</h2>
+            </div>
+
+            <div class="space-y-4 reveal">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-800">Apakah kerahasiaan data saya terjamin?</span>
+                        <i class="ph-bold ph-caret-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
+                        <p class="px-6 pb-5 text-slate-600 text-sm leading-relaxed">Sangat terjamin. Kami memiliki kebijakan privasi yang ketat. File tugas dan identitas Anda tidak akan pernah dipublikasikan atau diberikan kepada pihak ketiga.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-800">Bagaimana sistem revisinya?</span>
+                        <i class="ph-bold ph-caret-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
+                        <p class="px-6 pb-5 text-slate-600 text-sm leading-relaxed">Kami memberikan garansi revisi gratis sesuai kesepakatan awal, selama revisi tersebut tidak melenceng dari brief/materi yang sudah disepakati di awal pemesanan.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-800">Apakah aman dari Plagiasi (Turnitin)?</span>
+                        <i class="ph-bold ph-caret-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
+                        <p class="px-6 pb-5 text-slate-600 text-sm leading-relaxed">Tentu. Semua pekerjaan tulis (Makalah, Skripsi, Jurnal) dikerjakan secara orisinal dari awal (from scratch). Kami juga melampirkan hasil cek Turnitin sebagai bukti.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item bg-white border border-slate-200 rounded-2xl overflow-hidden transition-all duration-300">
+                    <button class="faq-btn w-full px-6 py-5 text-left flex justify-between items-center focus:outline-none">
+                        <span class="font-bold text-slate-800">Berapa lama proses pengerjaan aplikasi/web?</span>
+                        <i class="ph-bold ph-caret-down text-slate-400 transition-transform duration-300"></i>
+                    </button>
+                    <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 bg-slate-50/50">
+                        <p class="px-6 pb-5 text-slate-600 text-sm leading-relaxed">Waktu pengerjaan bergantung pada kompleksitas fitur aplikasi. Untuk landing page sederhana biasanya 2-5 hari. Untuk Sistem Informasi/Tugas Akhir IT kompleks sekitar 2-4 minggu. Semua timeline akan disepakati di awal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="kontak" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-brand-900"></div>
+        <!-- Abstract Bg Pattern -->
+        <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(#fff 1px, transparent 1px); background-size: 20px 20px;"></div>
+        
+        <div class="container mx-auto px-6 max-w-5xl relative z-10 text-center reveal">
+            <h2 class="text-3xl md:text-5xl font-extrabold text-white mb-6">Udah Mentok? Jangan Dipaksain!</h2>
+            <p class="text-brand-100 text-lg mb-10 max-w-2xl mx-auto">Konsultasiin aja dulu mumpung gratis. Daripada dimarahin dospem atau nilai hancur, mending amankan tugas lo bareng Harnad-Technology.</p>
+            
+            <a href="https://wa.me/6281234567890" target="_blank" class="inline-flex justify-center items-center gap-3 bg-green-500 hover:bg-green-400 text-white px-8 py-5 rounded-full font-bold text-lg transition-all duration-300 shadow-lg shadow-green-500/40 hover:-translate-y-1 hover:scale-105">
+                <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
+                Chat Admin (Fast Respon)
+            </a>
+            <p class="text-brand-200 text-sm mt-4">Aktif 24/7 Nemenin Begadang Lo</p>
+        </div>
+    </section>
+
+    <footer class="bg-slate-950 pt-16 pb-8 border-t border-slate-900">
+        <div class="container mx-auto px-6 max-w-7xl">
+            <div class="grid md:grid-cols-12 gap-8 mb-12 text-slate-400">
+                <!-- Brand Info -->
+                <div class="md:col-span-5">
+                    <a href="#" class="flex items-center gap-2 mb-4">
+                        <div class="w-8 h-8 bg-brand-600 rounded-lg flex items-center justify-center text-white font-bold text-sm">
+                            TP
+                        </div>
+                        <span class="text-xl font-extrabold tracking-tight text-white">Tugas<span class="text-brand-500">Pro</span></span>
+                    </a>
+                    <p class="text-sm leading-relaxed mb-6 pr-4">Partner terpercaya Anda untuk urusan akademik dan IT Development. Profesional, Cepat, dan Garansi memuaskan.</p>
+                    <div class="flex gap-4">
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="ph-fill ph-instagram-logo"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="ph-fill ph-tiktok-logo"></i></a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-slate-900 border border-slate-800 flex items-center justify-center hover:bg-brand-600 hover:text-white transition-colors"><i class="ph-fill ph-facebook-logo"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="md:col-span-3 md:col-start-7">
+                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Layanan Utama</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#layanan" class="hover:text-brand-400 transition-colors">Makalah & Jurnal</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-400 transition-colors">Tugas Akhir / Skripsi</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-400 transition-colors">Web Development</a></li>
+                        <li><a href="#layanan" class="hover:text-brand-400 transition-colors">Mobile App (Flutter)</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="md:col-span-3">
+                    <h4 class="text-white font-bold mb-4 uppercase text-sm tracking-wider">Kontak</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-whatsapp-logo text-green-500 text-lg"></i> 0812-9180-4882</li>
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-envelope-simple text-brand-500 text-lg"></i> harnadtechno@gmail.com</li>
+                        <li class="flex items-center gap-2"><i class="ph-fill ph-map-pin text-red-500 text-lg"></i> Tangerang, Indonesia</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+                <p>&copy; 2026 Harnad-Technology. All rights reserved.</p>
+                <div class="flex gap-4">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Navbar Scroll Effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('glass-nav', 'py-3');
+                    navbar.classList.remove('bg-transparent', 'py-4');
+                } else {
+                    navbar.classList.remove('glass-nav', 'py-3');
+                    navbar.classList.add('bg-transparent', 'py-4');
+                }
+            });
+
+            // Mobile Menu Toggle
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            const mobileIcon = mobileBtn.querySelector('i');
+
+            function toggleMenu() {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                if(mobileMenu.classList.contains('hidden')){
+                    mobileIcon.classList.remove('ph-x');
+                    mobileIcon.classList.add('ph-list');
+                } else {
+                    mobileIcon.classList.remove('ph-list');
+                    mobileIcon.classList.add('ph-x');
+                }
+            }
+
+            mobileBtn.addEventListener('click', toggleMenu);
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', toggleMenu);
+            });
+
+            // FAQ Accordion Logic
+            const faqBtns = document.querySelectorAll('.faq-btn');
+            
+            faqBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const content = btn.nextElementSibling;
+                    const icon = btn.querySelector('i');
+                    const parent = btn.parentElement;
+
+                    // Close all other FAQs
+                    faqBtns.forEach(otherBtn => {
+                        if (otherBtn !== btn) {
+                            otherBtn.nextElementSibling.style.maxHeight = null;
+                            otherBtn.querySelector('i').classList.remove('rotate-180');
+                            otherBtn.parentElement.classList.remove('border-brand-300', 'shadow-soft');
+                        }
+                    });
+
+                    // Toggle current FAQ
+                    if (content.style.maxHeight) {
+                        content.style.maxHeight = null;
+                        icon.classList.remove('rotate-180');
+                        parent.classList.remove('border-brand-300', 'shadow-soft');
+                    } else {
+                        content.style.maxHeight = content.scrollHeight + "px";
+                        icon.classList.add('rotate-180');
+                        parent.classList.add('border-brand-300', 'shadow-soft');
+                    }
+                });
+            });
+
+            // Intersection Observer for Scroll Reveal Animations
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.15,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target); // Stop observing once revealed
+                });
+            }, revealOptions);
+
+            revealElements.forEach(el => {
+                revealOnScroll.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
