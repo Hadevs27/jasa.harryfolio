@@ -49,6 +49,7 @@ export const initNavigation = () => {
         });
     }
 
+    window.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeDrawer(); });
     window.addEventListener('scroll', handleScrollHeader, { passive: true });
     handleScrollHeader();
 };

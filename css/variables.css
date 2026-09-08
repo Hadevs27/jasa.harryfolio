@@ -34,13 +34,13 @@
             --space-xs: 0.75rem;   /* 12px */
             --space-sm: 1rem;      /* 16px */
             --space-md: 1.5rem;    /* 24px */
-            --space-lg: 2.5rem;    /* 40px */
-            --space-xl: 4rem;      /* 64px */
-            --space-2xl: 7rem;     /* 112px */
+            --space-lg: clamp(1.5rem, 4vw, 2.5rem);    /* 40px */
+            --space-xl: clamp(2rem, 6vw, 4rem);      /* 64px */
+            --space-2xl: clamp(3rem, 10vw, 7rem);     /* 112px */
             
             /* Structural Constraints */
             --container-max: 1280px;
-            --header-height: 72px;
+            --header-height: calc(72px + env(safe-area-inset-top, 0px));
             
             /* Restrained Radius */
             --radius-sm: 4px;
