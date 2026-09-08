@@ -3,7 +3,7 @@ import { initFAQ } from './faq.js';
 import { initInteractions } from './interactions.js';
 
 export const SITE_CONFIG = {
-    whatsapp: "[PLACEHOLDER: NOMOR WHATSAPP]",
+    whatsapp: "6281291804882",
     whatsappMessage: "Halo Harnad Technologies, saya ingin berkonsultasi mengenai kebutuhan project saya.",
     portfolio: "https://harryfolio.my.id/"
 };
