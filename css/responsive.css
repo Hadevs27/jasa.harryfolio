@@ -165,15 +165,3 @@
     }
 }
 
-@media (max-width: 768px) {
-    .cpv-title {
-        font-size: 2.25rem;
-    }
-    .cpv-title-small {
-        font-size: 1.5rem;
-    }
-    .cpv-secondary {
-        aspect-ratio: auto;
-        height: 250px;
-    }
-}
