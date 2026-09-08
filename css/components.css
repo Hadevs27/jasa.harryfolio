@@ -878,22 +878,25 @@
             font-size: 0.85rem;
             color: var(--text-tertiary);
         }
+========================================= */
+/* =========================================
+   14. REVEAL ANIMATIONS & ACCESSIBILITY
+========================================= */
+.reveal-on-scroll {
+    opacity: 1;
+    transform: none;
+    transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
 
+.js-enabled .reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(24px);
+}
 
-        /* =========================================
-           14. REVEAL ANIMATIONS & ACCESSIBILITY
-        ========================================= */
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
+.js-enabled .reveal-on-scroll.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
 
 /* =========================================
    15. REFACTORED INLINE STYLES

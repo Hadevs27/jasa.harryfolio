@@ -1,7 +1,8 @@
 ﻿export const initInteractions = () => {
     const reveals = document.querySelectorAll('.reveal-on-scroll');
+    if (!reveals || reveals.length === 0) return;
 
-    const initScrollObserver = () => {
+    if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -14,10 +15,9 @@
             rootMargin: '0px 0px -40px 0px'
         });
 
-        if (reveals) {
-            reveals.forEach(el => observer.observe(el));
-        }
-    };
-
-    initScrollObserver();
+        reveals.forEach(el => observer.observe(el));
+    } else {
+        // Fallback for older browsers
+        reveals.forEach(el => el.classList.add('is-visible'));
+    }
 };
