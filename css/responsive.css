@@ -138,11 +138,7 @@
    16. CERTIFICATION & PROJECTS RESPONSIVE
 ========================================= */
 @media (min-width: 1024px) {
-    .certification-grid {
-        grid-template-columns: 1fr 1fr;
-        align-items: center;
-        gap: 4rem;
-    }
+    
     
     .cert-details {
         flex-direction: row;
@@ -165,3 +161,9 @@
     }
 }
 
+
+@media (max-width: 768px) {
+    .certification-wrapper {
+        padding: var(--space-lg);
+    }
+}

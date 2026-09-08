@@ -930,11 +930,7 @@
 /* =========================================
    16. CERTIFICATION & PROJECTS (REFACTORED)
 ========================================= */
-.certification-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-xl);
-}
+
 
 .cert-divider {
     border: none;
@@ -968,25 +964,11 @@
     font-weight: 500;
 }
 
-.cert-image-wrapper {
-    background-color: var(--bg-surface);
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    padding: 1rem;
-    cursor: pointer;
-    transition: transform var(--transition-normal), border-color var(--transition-fast);
-}
 
-.cert-image-wrapper:hover {
-    transform: translateY(-2px);
-    border-color: var(--text-main);
-}
 
-.cert-preview-img {
-    width: 100%;
-    border-radius: var(--radius-sm);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.03);
-}
+
+
+
 
 /* Projects specific */
 .project-image-container {
@@ -1105,4 +1087,15 @@
 
 .project-image-link:hover .real-project-img {
     transform: scale(1.02);
+}
+
+.certification-wrapper {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.02);
 }
