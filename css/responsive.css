@@ -1,0 +1,166 @@
+
+
+        /* =========================================
+           03. LAYOUT & TYPOGRAPHY UTILITIES
+        ========================================= */
+        @media (min-width: 768px) {
+            .container { padding: 0 var(--space-lg); }
+        }
+@media (min-width: 1024px) {
+            .section-padding {
+                padding-top: var(--space-2xl);
+                padding-bottom: var(--space-2xl);
+            }
+        }
+
+
+        /* =========================================
+           04. HEADER & NAVIGATION
+        ========================================= */
+        @media (min-width: 1024px) {
+            .nav-links { display: flex; }
+        }
+@media (min-width: 1024px) {
+            .mobile-toggle { display: none; }
+        }
+
+
+        /* =========================================
+           05. HERO SECTION
+        ========================================= */
+        @media (min-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1.1fr 0.9fr;
+            }
+        }
+
+
+        /* =========================================
+           06. SERVICES SECTION (Editorial Catalog)
+        ========================================= */
+        @media (min-width: 1024px) {
+            .service-row {
+                grid-template-columns: 80px 1.2fr 2fr;
+                gap: var(--space-lg);
+            }
+        }
+
+
+        /* =========================================
+           07. WHY HARNAD SECTION (Dark Slate Block)
+        ========================================= */
+        @media (min-width: 1024px) {
+            .why-grid {
+                grid-template-columns: 1fr 1.2fr;
+                gap: var(--space-2xl);
+            }
+        }
+@media (min-width: 640px) {
+            .why-values-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        /* =========================================
+           08. PROFESSIONAL BACKGROUND
+        ========================================= */
+        @media (min-width: 1024px) {
+            .bg-grid {
+                grid-template-columns: 1.2fr 0.8fr;
+            }
+        }
+
+
+        /* =========================================
+           10. SELECTED PROJECTS SECTION
+        ========================================= */
+        @media (min-width: 1024px) {
+            .featured-project {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+@media (min-width: 768px) {
+            .harryfolio-box {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+
+
+        /* =========================================
+           11. PROCESS SECTION (Horizontal Workflow)
+        ========================================= */
+        @media (min-width: 1024px) {
+            .process-timeline {
+                grid-template-columns: repeat(5, 1fr);
+                gap: var(--space-sm);
+            }
+        }
+
+
+        /* =========================================
+           12. FAQ ACCORDION SECTION
+        ========================================= */
+        @media (min-width: 1024px) {
+            .faq-grid {
+                grid-template-columns: 0.8fr 1.2fr;
+            }
+        }
+
+
+        /* =========================================
+           13. FINAL CTA & FOOTER
+        ========================================= */
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+
+
+        /* =========================================
+           14. REVEAL ANIMATIONS & ACCESSIBILITY
+        ========================================= */
+        @media (prefers-reduced-motion: reduce) {
+            .reveal-on-scroll {
+                opacity: 1 !important;
+                transform: none !important;
+                transition: none !important;
+            }
+            html {
+                scroll-behavior: auto;
+            }
+        }
+
+/* =========================================
+   16. CERTIFICATION & PROJECTS RESPONSIVE
+========================================= */
+@media (min-width: 1024px) {
+    .certification-grid {
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+        gap: 4rem;
+    }
+    
+    .cert-details {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 2rem;
+    }
+    
+    .cert-detail-group {
+        flex: 1 1 40%;
+    }
+    
+    .supporting-project-grid {
+        grid-template-columns: 1fr 1.5fr;
+        align-items: center;
+        gap: 4rem;
+    }
+    
+    .modal-body {
+        padding: 2.5rem;
+    }
+}

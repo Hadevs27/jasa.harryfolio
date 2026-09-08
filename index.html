@@ -18,7 +18,7 @@
     <meta property="og:url" content="[PLACEHOLDER: PRODUCTION URL]">
     <meta property="og:image" content="[PLACEHOLDER: OPEN GRAPH IMAGE]">
     
-    <!-- Favicon -->
+    <!-- Favicon 
     <link rel="icon" type="image/svg+xml" href="[PLACEHOLDER: FAVICON]">
     
     <!-- Google Fonts: Inter -->
@@ -26,1072 +26,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
-    <style>
-        /* =========================================
-           01. DESIGN TOKENS
-        ========================================= */
-        :root {
-            /* Palette: Light-first, Editorial, Technical Studio */
-            --bg-primary: #FAF9F6;       /* Warm editorial paper off-white */
-            --bg-surface: #FFFFFF;       /* Crisp surface */
-            --bg-subtle: #F1F3F5;        /* Neutral subtle fill */
-            --bg-dark: #0F172A;         /* Slate deep navy */
-            --bg-dark-surface: #1E293B;  /* Slate card fill */
-            
-            --text-main: #0F172A;        /* Charcoal main body */
-            --text-muted: #475569;       /* Reader secondary text */
-            --text-tertiary: #94A3B8;    /* Muted captions */
-            --text-light: #F8FAFC;       /* White for dark backgrounds */
-            --text-light-muted: #94A3B8;
-            
-            --border-color: #E2E8F0;
-            --border-subtle: #EEF2F6;
-            --border-dark: #334155;
-            
-            --accent: #1D4ED8;          /* Refined cobalt primary */
-            --accent-hover: #1E40AF;
-            --accent-light: #EFF6FF;
-            --accent-subtle: rgba(29, 78, 216, 0.08);
-            
-            /* Typography */
-            --font-main: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-            
-            /* Spacing Rhythm */
-            --space-3xs: 0.25rem;  /* 4px */
-            --space-2xs: 0.5rem;   /* 8px */
-            --space-xs: 0.75rem;   /* 12px */
-            --space-sm: 1rem;      /* 16px */
-            --space-md: 1.5rem;    /* 24px */
-            --space-lg: 2.5rem;    /* 40px */
-            --space-xl: 4rem;      /* 64px */
-            --space-2xl: 7rem;     /* 112px */
-            
-            /* Structural Constraints */
-            --container-max: 1280px;
-            --header-height: 72px;
-            
-            /* Restrained Radius */
-            --radius-sm: 4px;
-            --radius-md: 8px;
-            --radius-lg: 12px;
-            
-            /* Transitions */
-            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-editorial: 400ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        /* =========================================
-           02. RESET & BASE
-        ========================================= */
-        *, *::before, *::after {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
-            -webkit-text-size-adjust: 100%;
-        }
-
-        body {
-            font-family: var(--font-main);
-            color: var(--text-muted);
-            background-color: var(--bg-primary);
-            line-height: 1.65;
-            font-size: 1rem;
-            text-rendering: optimizeLegibility;
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            overflow-x: hidden;
-        }
-
-        h1, h2, h3, h4, h5, h6 {
-            color: var(--text-main);
-            font-weight: 700;
-            line-height: 1.15;
-            letter-spacing: -0.025em;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-            transition: color var(--transition-fast);
-        }
-
-        ul, ol {
-            list-style: none;
-        }
-
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        button, input {
-            font-family: inherit;
-            font-size: inherit;
-        }
-
-        :focus-visible {
-            outline: 2px solid var(--accent);
-            outline-offset: 3px;
-        }
-
-        /* =========================================
-           03. LAYOUT & TYPOGRAPHY UTILITIES
-        ========================================= */
-        .container {
-            width: 100%;
-            max-width: var(--container-max);
-            margin: 0 auto;
-            padding: 0 var(--space-md);
-        }
-
-        @media (min-width: 768px) {
-            .container { padding: 0 var(--space-lg); }
-        }
-
-        .section-padding {
-            padding-top: var(--space-xl);
-            padding-bottom: var(--space-xl);
-        }
-
-        @media (min-width: 1024px) {
-            .section-padding {
-                padding-top: var(--space-2xl);
-                padding-bottom: var(--space-2xl);
-            }
-        }
-
-        /* Editorial Label / Overline */
-        .eyebrow {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.12em;
-            color: var(--accent);
-            margin-bottom: var(--space-xs);
-        }
-
-        .eyebrow::before {
-            content: '';
-            display: inline-block;
-            width: 8px;
-            height: 8px;
-            background-color: var(--accent);
-            border-radius: 50%;
-        }
-
-        .heading-display {
-            font-size: clamp(2.5rem, 5vw, 4.25rem);
-            font-weight: 800;
-            letter-spacing: -0.035em;
-            color: var(--text-main);
-        }
-
-        .heading-section {
-            font-size: clamp(2rem, 3.5vw, 2.75rem);
-            font-weight: 700;
-            letter-spacing: -0.03em;
-        }
-
-        .heading-card {
-            font-size: 1.35rem;
-            font-weight: 600;
-            letter-spacing: -0.02em;
-        }
-
-        .lead-text {
-            font-size: clamp(1.05rem, 1.8vw, 1.2rem);
-            color: var(--text-muted);
-            max-width: 62ch;
-            font-weight: 400;
-        }
-
-        /* Buttons with tactile engineering */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.6rem;
-            padding: 0.875rem 1.75rem;
-            font-size: 0.9375rem;
-            font-weight: 600;
-            border-radius: var(--radius-md);
-            transition: all var(--transition-fast);
-            cursor: pointer;
-            border: 1px solid transparent;
-            white-space: nowrap;
-        }
-
-        .btn-primary {
-            background-color: var(--text-main);
-            color: var(--bg-surface);
-            border-color: var(--text-main);
-        }
-
-        .btn-primary:hover {
-            background-color: var(--accent);
-            border-color: var(--accent);
-            transform: translateY(-1px);
-        }
-
-        .btn-secondary {
-            background-color: transparent;
-            color: var(--text-main);
-            border-color: var(--border-color);
-        }
-
-        .btn-secondary:hover {
-            border-color: var(--text-main);
-            background-color: var(--bg-surface);
-        }
-
-        .btn-icon {
-            transition: transform var(--transition-fast);
-        }
-
-        .btn:hover .btn-icon {
-            transform: translateX(3px);
-        }
-
-        /* =========================================
-           04. HEADER & NAVIGATION
-        ========================================= */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: var(--header-height);
-            background-color: rgba(250, 249, 246, 0.88);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-bottom: 1px solid rgba(226, 232, 240, 0.6);
-            z-index: 1000;
-            transition: all var(--transition-normal);
-        }
-
-        .site-header.scrolled {
-            background-color: rgba(255, 255, 255, 0.96);
-            border-bottom-color: var(--border-color);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
-        }
-
-        .nav-wrapper {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            height: 100%;
-        }
-
-        .brand-logo {
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-weight: 800;
-            font-size: 1.05rem;
-            color: var(--text-main);
-            letter-spacing: -0.02em;
-        }
-
-        .brand-badge {
-            width: 10px;
-            height: 10px;
-            background-color: var(--accent);
-            border-radius: 2px;
-        }
-
-        .nav-links {
-            display: none;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        @media (min-width: 1024px) {
-            .nav-links { display: flex; }
-        }
-
-        .nav-link {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            position: relative;
-            padding: 0.25rem 0;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0%;
-            height: 2px;
-            background-color: var(--accent);
-            transition: width var(--transition-fast);
-        }
-
-        .nav-link:hover {
-            color: var(--text-main);
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        /* Mobile Hamburger Toggle */
-        .mobile-toggle {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-sm);
-            background: var(--bg-surface);
-            cursor: pointer;
-            color: var(--text-main);
-        }
-
-        @media (min-width: 1024px) {
-            .mobile-toggle { display: none; }
-        }
-
-        /* Mobile Slide Drawer */
-        .mobile-drawer {
-            position: fixed;
-            top: var(--header-height);
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: var(--bg-surface);
-            padding: var(--space-lg) var(--space-md);
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-md);
-            transform: translateX(100%);
-            transition: transform var(--transition-editorial);
-            z-index: 999;
-            overflow-y: auto;
-        }
-
-        .mobile-drawer.open {
-            transform: translateX(0);
-        }
-
-        .mobile-nav-link {
-            font-size: 1.25rem;
-            font-weight: 600;
-            color: var(--text-main);
-            padding-bottom: 0.75rem;
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        /* =========================================
-           05. HERO SECTION
-        ========================================= */
-        .hero-section {
-            padding-top: calc(var(--header-height) + var(--space-2xl));
-            padding-bottom: var(--space-2xl);
-            position: relative;
-            background: radial-gradient(circle at 80% 20%, rgba(29, 78, 216, 0.03) 0%, transparent 50%);
-        }
-
-        .hero-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-xl);
-            align-items: center;
-        }
-
-        @media (min-width: 1024px) {
-            .hero-grid {
-                grid-template-columns: 1.1fr 0.9fr;
-            }
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-        }
-
-        .hero-cta-group {
-            display: flex;
-            flex-wrap: wrap;
-            gap: var(--space-sm);
-            margin-top: var(--space-lg);
-            width: 100%;
-        }
-
-        .hero-meta {
-            margin-top: var(--space-lg);
-            padding-top: var(--space-md);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 1.25rem;
-            font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.04em;
-            color: var(--text-tertiary);
-            text-transform: uppercase;
-        }
-
-        .hero-meta-dot {
-            width: 4px;
-            height: 4px;
-            background-color: var(--border-dark);
-            border-radius: 50%;
-        }
-
-        /* Custom Code Studio Mock (Hero Visual Anchor) */
-        .code-studio-card {
-            background-color: var(--bg-dark);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-dark);
-            overflow: hidden;
-            box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.25);
-        }
-
-        .studio-header {
-            background-color: #1E293B;
-            padding: 0.75rem 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #334155;
-        }
-
-        .window-dots {
-            display: flex;
-            gap: 6px;
-        }
-
-        .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-        }
-        .dot-red { background-color: #EF4444; }
-        .dot-yellow { background-color: #F59E0B; }
-        .dot-green { background-color: #10B981; }
-
-        .studio-title {
-            font-family: monospace;
-            font-size: 0.75rem;
-            color: var(--text-light-muted);
-        }
-
-        .studio-body {
-            padding: 1.5rem;
-            font-family: 'Consolas', 'Courier New', monospace;
-            font-size: 0.85rem;
-            line-height: 1.7;
-            color: #E2E8F0;
-            overflow-x: auto;
-        }
-
-        .code-keyword { color: #F43F5E; }
-        .code-func { color: #38BDF8; }
-        .code-string { color: #34D399; }
-        .code-comment { color: #64748B; font-style: italic; }
-        .code-var { color: #FBBF24; }
-
-        /* =========================================
-           06. SERVICES SECTION (Editorial Catalog)
-        ========================================= */
-        .services-section {
-            background-color: var(--bg-surface);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .services-header {
-            max-width: 680px;
-            margin-bottom: var(--space-xl);
-        }
-
-        .services-catalog {
-            display: flex;
-            flex-direction: column;
-            gap: var(--space-xl);
-        }
-
-        .service-row {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-md);
-            padding-bottom: var(--space-xl);
-            border-bottom: 1px solid var(--border-subtle);
-        }
-
-        @media (min-width: 1024px) {
-            .service-row {
-                grid-template-columns: 80px 1.2fr 2fr;
-                gap: var(--space-lg);
-            }
-        }
-
-        .service-row:last-child {
-            border-bottom: none;
-            padding-bottom: 0;
-        }
-
-        .service-num {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--accent);
-            letter-spacing: -0.03em;
-        }
-
-        .service-main h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .service-main p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .service-tags-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-            gap: 0.6rem;
-            align-content: start;
-        }
-
-        .service-tag {
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-color);
-            padding: 0.5rem 0.85rem;
-            border-radius: var(--radius-sm);
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-main);
-            display: flex;
-            align-items: center;
-            gap: 0.4rem;
-        }
-
-        .service-tag::before {
-            content: '›';
-            color: var(--accent);
-            font-weight: 700;
-        }
-
-        /* =========================================
-           07. WHY HARNAD SECTION (Dark Slate Block)
-        ========================================= */
-        .why-section {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            position: relative;
-        }
-
-        .why-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-xl);
-        }
-
-        @media (min-width: 1024px) {
-            .why-grid {
-                grid-template-columns: 1fr 1.2fr;
-                gap: var(--space-2xl);
-            }
-        }
-
-        .why-statement h2 {
-            color: var(--text-light);
-            margin-top: 0.5rem;
-        }
-
-        .why-values-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-lg);
-        }
-
-        @media (min-width: 640px) {
-            .why-values-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .value-card {
-            border-top: 1px solid var(--border-dark);
-            padding-top: var(--space-md);
-        }
-
-        .value-card h3 {
-            color: var(--text-light);
-            font-size: 1.15rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .value-card p {
-            color: var(--text-light-muted);
-            font-size: 0.9rem;
-        }
-
-        /* =========================================
-           08. PROFESSIONAL BACKGROUND
-        ========================================= */
-        .bg-section {
-            background-color: var(--bg-primary);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .bg-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-xl);
-            align-items: center;
-        }
-
-        @media (min-width: 1024px) {
-            .bg-grid {
-                grid-template-columns: 1.2fr 0.8fr;
-            }
-        }
-
-        .trust-panel {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: var(--space-lg);
-            position: relative;
-        }
-
-        .trust-panel::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background-color: var(--accent);
-            border-radius: var(--radius-md) 0 0 var(--radius-md);
-        }
-
-        .trust-meta {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-top: var(--space-sm);
-            line-height: 1.8;
-        }
-
-        /* =========================================
-           09. TECHNOLOGIES SECTION
-        ========================================= */
-        .tech-section {
-            background-color: var(--bg-surface);
-        }
-
-        .tech-matrix {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: var(--space-lg);
-            margin-top: var(--space-xl);
-        }
-
-        .tech-group-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--text-tertiary);
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid var(--border-color);
-            margin-bottom: 1rem;
-        }
-
-        .tech-pill-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .tech-item {
-            font-size: 0.9375rem;
-            font-weight: 600;
-            color: var(--text-main);
-            padding: 0.4rem 0.6rem;
-            border-radius: var(--radius-sm);
-            background-color: var(--bg-primary);
-            border: 1px solid var(--border-subtle);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-
-        /* =========================================
-           10. SELECTED PROJECTS SECTION
-        ========================================= */
-        .projects-section {
-            background-color: var(--bg-primary);
-            border-top: 1px solid var(--border-color);
-        }
-
-        .featured-project {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr;
-            margin-top: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-
-        @media (min-width: 1024px) {
-            .featured-project {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .project-visual {
-            background-color: var(--bg-dark);
-            padding: var(--space-lg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 280px;
-        }
-
-        .project-mock-frame {
-            width: 100%;
-            height: 100%;
-            min-height: 220px;
-            border: 1px dashed var(--border-dark);
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light-muted);
-            font-size: 0.85rem;
-            text-align: center;
-            padding: 1rem;
-        }
-
-        .project-details {
-            padding: var(--space-lg);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .project-category {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .project-links-row {
-            display: flex;
-            gap: 1.25rem;
-            margin-top: var(--space-md);
-        }
-
-        .project-link {
-            font-size: 0.875rem;
-            font-weight: 600;
-            color: var(--text-main);
-            display: inline-flex;
-            align-items: center;
-            gap: 0.3rem;
-            border-bottom: 1px solid var(--text-main);
-        }
-
-        .project-link:hover {
-            color: var(--accent);
-            border-color: var(--accent);
-        }
-
-        .harryfolio-box {
-            background-color: var(--bg-surface);
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-md);
-            padding: var(--space-lg);
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            gap: var(--space-sm);
-        }
-
-        @media (min-width: 768px) {
-            .harryfolio-box {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-
-        /* =========================================
-           11. PROCESS SECTION (Horizontal Workflow)
-        ========================================= */
-        .process-section {
-            background-color: var(--bg-surface);
-            border-top: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .process-timeline {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-md);
-            margin-top: var(--space-xl);
-            position: relative;
-        }
-
-        @media (min-width: 1024px) {
-            .process-timeline {
-                grid-template-columns: repeat(5, 1fr);
-                gap: var(--space-sm);
-            }
-        }
-
-        .process-step {
-            border-top: 2px solid var(--border-color);
-            padding-top: var(--space-md);
-            position: relative;
-            transition: border-color var(--transition-fast);
-        }
-
-        .process-step:hover {
-            border-top-color: var(--accent);
-        }
-
-        .process-num {
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: var(--accent);
-            margin-bottom: 0.5rem;
-        }
-
-        .process-step h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.4rem;
-        }
-
-        .process-step p {
-            font-size: 0.875rem;
-            color: var(--text-muted);
-        }
-
-        /* =========================================
-           12. FAQ ACCORDION SECTION
-        ========================================= */
-        .faq-section {
-            background-color: var(--bg-primary);
-        }
-
-        .faq-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-xl);
-        }
-
-        @media (min-width: 1024px) {
-            .faq-grid {
-                grid-template-columns: 0.8fr 1.2fr;
-            }
-        }
-
-        .faq-accordion {
-            display: flex;
-            flex-direction: column;
-            border-top: 1px solid var(--border-color);
-        }
-
-        .faq-item {
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .faq-trigger {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.25rem 0;
-            background: none;
-            border: none;
-            text-align: left;
-            font-size: 1.05rem;
-            font-weight: 600;
-            color: var(--text-main);
-            cursor: pointer;
-        }
-
-        .faq-icon {
-            width: 20px;
-            height: 20px;
-            position: relative;
-            flex-shrink: 0;
-            transition: transform var(--transition-normal);
-        }
-
-        .faq-icon::before, .faq-icon::after {
-            content: '';
-            position: absolute;
-            background-color: var(--text-main);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .faq-icon::before { width: 12px; height: 2px; }
-        .faq-icon::after { width: 2px; height: 12px; transition: transform var(--transition-normal); }
-
-        .faq-trigger[aria-expanded="true"] .faq-icon::after {
-            transform: translate(-50%, -50%) rotate(90deg);
-            opacity: 0;
-        }
-
-        .faq-panel {
-            display: grid;
-            grid-template-rows: 0fr;
-            transition: grid-template-rows var(--transition-editorial);
-        }
-
-        .faq-panel[aria-hidden="false"] {
-            grid-template-rows: 1fr;
-        }
-
-        .faq-content {
-            overflow: hidden;
-            padding-bottom: 0;
-            transition: padding-bottom var(--transition-editorial);
-            font-size: 0.95rem;
-            color: var(--text-muted);
-        }
-
-        .faq-trigger[aria-expanded="true"] + .faq-panel .faq-content {
-            padding-bottom: 1.25rem;
-        }
-
-        /* =========================================
-           13. FINAL CTA & FOOTER
-        ========================================= */
-        .cta-section {
-            background-color: var(--bg-dark);
-            color: var(--text-light);
-            text-align: center;
-            padding-top: var(--space-2xl);
-            padding-bottom: var(--space-2xl);
-        }
-
-        .cta-content {
-            max-width: 720px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .cta-content h2 {
-            color: var(--text-light);
-            margin-bottom: var(--space-md);
-        }
-
-        .cta-content p {
-            color: var(--text-light-muted);
-            margin-bottom: var(--space-lg);
-        }
-
-        .site-footer {
-            background-color: var(--bg-surface);
-            border-top: 1px solid var(--border-color);
-            padding-top: var(--space-xl);
-            padding-bottom: var(--space-lg);
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: var(--space-xl);
-            margin-bottom: var(--space-xl);
-        }
-
-        @media (min-width: 768px) {
-            .footer-grid {
-                grid-template-columns: 2fr 1fr 1fr;
-            }
-        }
-
-        .footer-brand {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--text-main);
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-links-title {
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-            color: var(--text-main);
-            margin-bottom: 1rem;
-        }
-
-        .footer-links-list {
-            display: flex;
-            flex-direction: column;
-            gap: 0.6rem;
-            font-size: 0.9rem;
-        }
-
-        .footer-links-list a:hover, button.footer-btn:hover {
-            color: var(--accent);
-        }
-
-        .footer-bottom {
-            padding-top: var(--space-md);
-            border-top: 1px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 0.85rem;
-            color: var(--text-tertiary);
-        }
-
-        /* =========================================
-           14. REVEAL ANIMATIONS & ACCESSIBILITY
-        ========================================= */
-        .reveal-on-scroll {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 600ms cubic-bezier(0.16, 1, 0.3, 1), transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .reveal-on-scroll.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            .reveal-on-scroll {
-                opacity: 1 !important;
-                transform: none !important;
-                transition: none !important;
-            }
-            html {
-                scroll-behavior: auto;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="css/variables.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
@@ -1112,7 +50,7 @@
                 <a href="#project" class="nav-link">Project</a>
                 <a href="#proses" class="nav-link">Proses</a>
                 <a href="#faq" class="nav-link">FAQ</a>
-                <button class="btn btn-primary js-wa-trigger" style="padding: 0.5rem 1.25rem; font-size: 0.875rem;">Konsultasi</button>
+                <button class="btn btn-primary header-btn js-wa-trigger">Konsultasi</button>
             </nav>
 
             <button class="mobile-toggle" id="mobileMenuBtn" aria-expanded="false" aria-label="Buka Menu Navigasi">
@@ -1132,7 +70,7 @@
             <a href="#project" class="mobile-nav-link js-drawer-close">Project</a>
             <a href="#proses" class="mobile-nav-link js-drawer-close">Proses</a>
             <a href="#faq" class="mobile-nav-link js-drawer-close">FAQ</a>
-            <button class="btn btn-primary js-wa-trigger" style="width: 100%; margin-top: auto;">Konsultasi Sekarang</button>
+            <button class="btn btn-primary mobile-drawer-btn js-wa-trigger">Konsultasi Sekarang</button>
         </nav>
     </header>
 
@@ -1145,7 +83,7 @@
                 <div class="hero-grid">
                     <div class="hero-content reveal-on-scroll">
                         <span class="eyebrow">HARNAD TECHNOLOGIES</span>
-                        <h1 id="hero-heading" class="heading-display" style="margin-top: 0.5rem; margin-bottom: 1rem;">Solusi Digital untuk Kebutuhan Akademik dan Bisnis</h1>
+                        <h1 id="hero-heading" class="heading-display hero-title">Solusi Digital untuk Kebutuhan Akademik dan Bisnis</h1>
                         <p class="lead-text">Kami membantu mahasiswa, individu, dan bisnis melalui layanan academic assistance, pengembangan website, aplikasi mobile, serta solusi software yang disesuaikan dengan kebutuhan setiap project.</p>
                         
                         <div class="hero-cta-group">
@@ -1201,7 +139,7 @@
             <div class="container">
                 <div class="services-header reveal-on-scroll">
                     <span class="eyebrow">LAYANAN</span>
-                    <h2 class="heading-section" style="margin-top: 0.25rem; margin-bottom: 0.75rem;">Layanan yang Disesuaikan dengan Kebutuhan Anda</h2>
+                    <h2 class="heading-section section-title">Layanan yang Disesuaikan dengan Kebutuhan Anda</h2>
                     <p class="lead-text">Dari kebutuhan akademik hingga pengembangan software, Harnad Technologies menyediakan layanan yang fleksibel dengan pendekatan yang terstruktur.</p>
                 </div>
 
@@ -1272,9 +210,9 @@
             <div class="container">
                 <div class="why-grid">
                     <div class="why-statement reveal-on-scroll">
-                        <span class="eyebrow" style="color: #60A5FA;">WHY HARNAD</span>
+                        <span class="eyebrow eyebrow-light">WHY HARNAD</span>
                         <h2 class="heading-section">Pendekatan Profesional untuk Setiap Project</h2>
-                        <p style="color: var(--text-light-muted); margin-top: 1rem; font-size: 1.05rem;">Setiap kebutuhan dimulai dengan memahami masalah, menentukan solusi yang tepat, lalu mengerjakannya secara terstruktur agar hasil yang diberikan tetap relevan dengan tujuan project.</p>
+                        <p class="why-description">Setiap kebutuhan dimulai dengan memahami masalah, menentukan solusi yang tepat, lalu mengerjakannya secara terstruktur agar hasil yang diberikan tetap relevan dengan tujuan project.</p>
                     </div>
 
                     <div class="why-values-grid reveal-on-scroll">
@@ -1300,26 +238,125 @@
         </section>
 
         <!-- =========================================
-             PROFESSIONAL BACKGROUND
+             PROFESSIONAL CERTIFICATION
         ========================================= -->
-        <section class="section-padding bg-section">
+        <section class="section-padding certification-section">
             <div class="container">
-                <div class="bg-grid">
+                <div class="certification-grid">
                     <div class="reveal-on-scroll">
-                        <span class="eyebrow">PROFESSIONAL BACKGROUND</span>
-                        <h2 class="heading-section" style="margin-top: 0.25rem; margin-bottom: 0.75rem;">Built with Technical Expertise</h2>
-                        <p class="lead-text">Harnad Technologies dibangun dengan pengalaman dalam pengembangan frontend, backend, web application, mobile application, database, dan software development.</p>
+                        <span class="eyebrow">PROFESSIONAL CERTIFICATION</span>
+                        <h2 class="heading-section section-title">Junior Web Programmer</h2>
+                        <p class="lead-text">Pemrograman dan Pengembangan Perangkat Lunak</p>
+                        
+                        <hr class="cert-divider">
+                        
+                        <div class="cert-details">
+                            <div class="cert-detail-group">
+                                <span class="cert-label">Issued by</span>
+                                <span class="cert-value">LSP Media Informatika</span>
+                            </div>
+                            <div class="cert-detail-group">
+                                <span class="cert-label">Certification Authority</span>
+                                <span class="cert-value">BNSP</span>
+                            </div>
+                            <div class="cert-detail-group">
+                                <span class="cert-label">Credential</span>
+                                <span class="cert-value">72100 3522 4 0213671 2026</span>
+                            </div>
+                            <div class="cert-detail-group">
+                                <span class="cert-label">Valid</span>
+                                <span class="cert-value">2026 — 2029</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-secondary js-cert-trigger" style="margin-top: 2rem;">
+                            <span>Lihat Sertifikat</span>
+                            <span class="btn-icon">→</span>
+                        </button>
                     </div>
 
-                    <div class="trust-panel reveal-on-scroll">
-                        <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-tertiary);">Professional Certification</span>
-                        <h3 class="heading-card" style="margin-top: 0.25rem;">[PLACEHOLDER: NAMA SERTIFIKASI]</h3>
-                        <div class="trust-meta">
-                            <strong>Issuer:</strong> [PLACEHOLDER: NAMA LEMBAGA PENERBIT]<br>
-                            <strong>Credential ID:</strong> [PLACEHOLDER: NOMOR / ID SERTIFIKASI JIKA ADA]
+                    <div class="cert-visual reveal-on-scroll" aria-hidden="true">
+                        <div class="cert-image-wrapper js-cert-trigger">
+                            <img src="assets/certificates/sertifikat-bnsp.webp" alt="Sertifikat Kompetensi BNSP Junior Web Programmer" loading="lazy" class="cert-preview-img">
                         </div>
-                        <a href="[PLACEHOLDER: URL VERIFIKASI SERTIFIKASI]" target="_blank" rel="noopener noreferrer" class="project-link" style="margin-top: 1rem;">Verifikasi Sertifikat →</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================
+             SELECTED PROJECTS
+        ========================================= -->
+        <section id="project" class="section-padding projects-section">
+            <div class="container">
+                <div class="reveal-on-scroll section-header-wide" style="margin-bottom: 4rem;">
+                    <span class="eyebrow">SELECTED PROJECTS</span>
+                    <h2 class="heading-section section-title">Real Work, Real Solutions</h2>
+                    <p class="lead-text">Kumpulan project terpilih yang merepresentasikan pengalaman dalam pengembangan sistem informasi dan aplikasi.</p>
+                </div>
+
+                <!-- Featured Project 01: SIPADU -->
+                <article class="featured-project reveal-on-scroll">
+                    <div class="project-visual">
+                        <a href="https://projek.harryfolio.my.id/" target="_blank" rel="noopener noreferrer" class="project-image-container">
+                            <img src="assets/images/project-sipadu.webp" alt="SIPADU - Sistem Arsip Terintegrasi" loading="lazy" class="project-img">
+                        </a>
+                    </div>
+                    <div class="project-details">
+                        <div class="project-meta">01 / FEATURED PROJECT</div>
+                        <h3 class="heading-card featured-project-title">SIPADU</h3>
+                        <p class="project-subtitle">Sistem Arsip Terintegrasi Disnaker Kabupaten Tangerang</p>
+                        <span class="project-category">Web Application · Information System</span>
+                        
+                        <p class="featured-project-desc" style="margin-top: 1.5rem;">Sistem arsip terintegrasi yang dikembangkan untuk membantu pengelolaan arsip dan proses administrasi secara lebih terstruktur.</p>
+                        
+                        <div class="featured-project-tech">
+                            TECHNOLOGY: <span class="tech-highlight">PHP, Laravel, MySQL, Bootstrap</span>
+                        </div>
+                        
+                        <div class="project-links-row" style="margin-top: 2rem;">
+                            <a href="https://projek.harryfolio.my.id/" target="_blank" rel="noopener noreferrer" class="project-link-main">
+                                View Project <span class="link-arrow">→</span>
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Supporting Project 02: Absensi Yayasan -->
+                <article class="supporting-project reveal-on-scroll" style="margin-top: 6rem;">
+                    <div class="supporting-project-grid">
+                        <div class="project-details">
+                            <div class="project-meta">02 / PROJECT</div>
+                            <h3 class="heading-card featured-project-title">Absensi Yayasan</h3>
+                            <span class="project-category">Web Application · Information System</span>
+                            
+                            <p class="featured-project-desc" style="margin-top: 1rem;">Sistem informasi untuk membantu pengelolaan data dan aktivitas absensi secara terstruktur.</p>
+                            
+                            <div class="featured-project-tech">
+                                TECHNOLOGY: <span class="tech-highlight">PHP, CodeIgniter, MySQL</span>
+                            </div>
+                            
+                            <div class="project-links-row" style="margin-top: 1.5rem;">
+                                <a href="https://projek2.harryfolio.my.id/" target="_blank" rel="noopener noreferrer" class="project-link-main">
+                                    View Project <span class="link-arrow">→</span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="project-visual supporting-visual">
+                            <a href="https://projek2.harryfolio.my.id/" target="_blank" rel="noopener noreferrer" class="project-image-container">
+                                <img src="assets/images/project-absensi.webp" alt="Absensi Yayasan" loading="lazy" class="project-img">
+                            </a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Harryfolio Connection Banner -->
+                <div class="harryfolio-box reveal-on-scroll" style="margin-top: 6rem;">
+                    <div>
+                        <h3 class="heading-card harryfolio-title">Ingin melihat project lainnya?</h3>
+                        <p class="harryfolio-desc">Lihat portfolio lengkap untuk melihat project, eksperimen, dan karya lainnya.</p>
+                    </div>
+                    <a href="https://harryfolio.my.id/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-nowrap">Lihat Full Portfolio →</a>
                 </div>
             </div>
         </section>
@@ -1329,9 +366,9 @@
         ========================================= -->
         <section id="teknologi" class="section-padding tech-section">
             <div class="container">
-                <div class="reveal-on-scroll" style="max-width: 640px;">
+                <div class="reveal-on-scroll section-header-narrow">
                     <span class="eyebrow">TECHNOLOGY</span>
-                    <h2 class="heading-section" style="margin-top: 0.25rem; margin-bottom: 0.75rem;">Technology Behind the Solutions</h2>
+                    <h2 class="heading-section section-title">Technology Behind the Solutions</h2>
                     <p class="lead-text">Teknologi dipilih berdasarkan kebutuhan project, skalabilitas, maintainability, dan kebutuhan deployment.</p>
                 </div>
 
@@ -1387,56 +424,13 @@
         </section>
 
         <!-- =========================================
-             PROJECTS SECTION
-        ========================================= -->
-        <section id="project" class="section-padding projects-section">
-            <div class="container">
-                <div class="reveal-on-scroll" style="max-width: 680px;">
-                    <span class="eyebrow">SELECTED PROJECTS</span>
-                    <h2 class="heading-section" style="margin-top: 0.25rem; margin-bottom: 0.75rem;">Beberapa Project yang Pernah Dikembangkan</h2>
-                    <p class="lead-text">Kumpulan project terpilih yang merepresentasikan pengalaman dalam pengembangan website, aplikasi, sistem informasi, AI, dan software.</p>
-                </div>
-
-                <!-- Featured Hero Project -->
-                <article class="featured-project reveal-on-scroll">
-                    <div class="project-visual">
-                        <div class="project-mock-frame">
-                            [PLACEHOLDER: PROJECT IMAGE / PREVIEW]
-                        </div>
-                    </div>
-                    <div class="project-details">
-                        <span class="project-category">[PLACEHOLDER: CATEGORY]</span>
-                        <h3 class="heading-card" style="font-size: 1.6rem; margin-bottom: 0.5rem;">[PLACEHOLDER: PROJECT NAME]</h3>
-                        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1rem;">[PLACEHOLDER: PROJECT DESCRIPTION]</p>
-                        <div style="font-size: 0.8rem; font-weight: 600; color: var(--text-tertiary); margin-bottom: 1rem;">
-                            TECHNOLOGY: <span style="color: var(--text-main);">[PLACEHOLDER: TECHNOLOGIES]</span>
-                        </div>
-                        <div class="project-links-row">
-                            <a href="[PLACEHOLDER: PROJECT URL]" target="_blank" rel="noopener noreferrer" class="project-link">Live Demo →</a>
-                            <a href="[PLACEHOLDER: GITHUB URL]" target="_blank" rel="noopener noreferrer" class="project-link">Repository →</a>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Harryfolio Connection Banner -->
-                <div class="harryfolio-box reveal-on-scroll">
-                    <div>
-                        <h3 class="heading-card" style="margin-bottom: 0.25rem;">Ingin melihat project lainnya?</h3>
-                        <p style="color: var(--text-muted); font-size: 0.9rem;">Lihat portfolio lengkap untuk melihat project, eksperimen, dan karya lainnya.</p>
-                    </div>
-                    <a href="https://harryfolio.my.id/" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" style="white-space: nowrap;">Lihat Full Portfolio →</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- =========================================
              PROCESS SECTION (Horizontal Flow)
         ========================================= -->
         <section id="proses" class="section-padding process-section">
             <div class="container">
-                <div class="reveal-on-scroll" style="max-width: 640px;">
+                <div class="reveal-on-scroll section-header-narrow">
                     <span class="eyebrow">HOW IT WORKS</span>
-                    <h2 class="heading-section" style="margin-top: 0.25rem; margin-bottom: 0.75rem;">Proses Kerja yang Jelas dan Terstruktur</h2>
+                    <h2 class="heading-section section-title">Proses Kerja yang Jelas dan Terstruktur</h2>
                     <p class="lead-text">Setiap project dimulai dengan memahami kebutuhan dan diakhiri dengan delivery yang sesuai dengan scope yang telah disepakati.</p>
                 </div>
 
@@ -1482,7 +476,7 @@
                 <div class="faq-grid">
                     <div class="reveal-on-scroll">
                         <span class="eyebrow">FAQ</span>
-                        <h2 class="heading-section" style="margin-top: 0.25rem; margin-bottom: 0.75rem;">Pertanyaan yang Sering Diajukan</h2>
+                        <h2 class="heading-section section-title">Pertanyaan yang Sering Diajukan</h2>
                         <p class="lead-text">Informasi seputar cara kerja, cakupan layanan, dan komitmen pengerjaan project.</p>
                     </div>
 
@@ -1575,16 +569,16 @@
         <section class="cta-section">
             <div class="container">
                 <div class="cta-content reveal-on-scroll">
-                    <span class="eyebrow" style="color: #60A5FA;">LET'S WORK TOGETHER</span>
+                    <span class="eyebrow eyebrow-light">LET'S WORK TOGETHER</span>
                     <h2 class="heading-section">Punya Project atau Kebutuhan yang Ingin Didiskusikan?</h2>
-                    <p class="lead-text" style="color: var(--text-light-muted);">Ceritakan kebutuhan Anda kepada Harnad Technologies. Kami akan membantu memahami kebutuhan tersebut dan menentukan solusi yang paling sesuai.</p>
+                    <p class="lead-text cta-lead">Ceritakan kebutuhan Anda kepada Harnad Technologies. Kami akan membantu memahami kebutuhan tersebut dan menentukan solusi yang paling sesuai.</p>
                     
-                    <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-                        <button class="btn btn-primary js-wa-trigger" style="background-color: var(--accent); border-color: var(--accent);">
+                    <div class="cta-actions">
+                        <button class="btn btn-primary btn-accent js-wa-trigger">
                             <span>Konsultasi via WhatsApp</span>
                             <span class="btn-icon">→</span>
                         </button>
-                        <a href="#project" class="btn btn-secondary" style="color: var(--text-light); border-color: var(--border-dark);">Lihat Portfolio</a>
+                        <a href="#project" class="btn btn-secondary btn-outline-light">Lihat Portfolio</a>
                     </div>
                 </div>
             </div>
@@ -1599,8 +593,8 @@
             <div class="footer-grid">
                 <div>
                     <div class="footer-brand">HARNAD TECHNOLOGIES</div>
-                    <div style="font-size: 0.85rem; font-weight: 600; color: var(--text-tertiary); margin-bottom: 0.75rem;">Digital Solutions & Academic Assistance</div>
-                    <p style="font-size: 0.875rem; color: var(--text-muted); max-width: 380px;">Menyediakan layanan academic assistance, web development, mobile development, dan technical assistance untuk kebutuhan individu, mahasiswa, maupun bisnis.</p>
+                    <div class="footer-subtitle">Digital Solutions & Academic Assistance</div>
+                    <p class="footer-desc">Menyediakan layanan academic assistance, web development, mobile development, dan technical assistance untuk kebutuhan individu, mahasiswa, maupun bisnis.</p>
                 </div>
 
                 <div>
@@ -1610,7 +604,7 @@
                         <a href="#layanan">Layanan</a>
                         <a href="#project">Project</a>
                         <a href="#faq">FAQ</a>
-                        <button class="js-wa-trigger footer-btn" style="background: none; border: none; text-align: left; padding: 0; font-size: inherit; font-family: inherit; color: inherit; cursor: pointer;">Kontak</button>
+                        <button class="js-wa-trigger footer-btn footer-btn-bare">Kontak</button>
                     </div>
                 </div>
 
@@ -1621,7 +615,7 @@
                         <a href="[PLACEHOLDER: GITHUB URL]" target="_blank" rel="noopener noreferrer">GitHub</a>
                         <a href="[PLACEHOLDER: LINKEDIN URL]" target="_blank" rel="noopener noreferrer">LinkedIn</a>
                         <a href="[PLACEHOLDER: INSTAGRAM URL]" target="_blank" rel="noopener noreferrer">Instagram</a>
-                        <button class="js-wa-trigger footer-btn" style="background: none; border: none; text-align: left; padding: 0; font-size: inherit; font-family: inherit; color: inherit; cursor: pointer;">WhatsApp</button>
+                        <button class="js-wa-trigger footer-btn footer-btn-bare">WhatsApp</button>
                     </div>
                 </div>
             </div>
@@ -1635,152 +629,27 @@
     <!-- =========================================
          JAVASCRIPT ARCHITECTURE
     ========================================= -->
-    <script>
-        (function() {
-            'use strict';
+    <script type="module" src="js/main.js"></script>
 
-            /* =========================================
-               01. CENTRALIZED SITE CONFIGURATION
-            ========================================= */
-            const SITE_CONFIG = {
-                whatsapp: "[PLACEHOLDER: NOMOR WHATSAPP]", // e.g., "628xxxxxxxxxx"
-                whatsappMessage: "Halo Harnad Technologies, saya ingin berkonsultasi mengenai kebutuhan project saya.",
-                portfolio: "https://harryfolio.my.id/"
-            };
+    <!-- =========================================
+         CERTIFICATE MODAL
+    ========================================= -->
+    <div id="certModal" class="modal-backdrop" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title" class="visually-hidden">Preview Sertifikat</h3>
+                <button class="modal-close js-modal-close" aria-label="Tutup preview sertifikat">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="modal-body">
+                <img src="assets/certificates/sertifikat-bnsp.webp" alt="Sertifikat BNSP Junior Web Programmer" class="modal-cert-img" loading="lazy">
+            </div>
+        </div>
+    </div>
 
-            /* =========================================
-               02. DOM REFERENCES
-            ========================================= */
-            const DOM = {
-                header: document.getElementById('siteHeader'),
-                mobileBtn: document.getElementById('mobileMenuBtn'),
-                mobileDrawer: document.getElementById('mobileDrawer'),
-                drawerCloses: document.querySelectorAll('.js-drawer-close'),
-                waTriggers: document.querySelectorAll('.js-wa-trigger'),
-                faqTriggers: document.querySelectorAll('.faq-trigger'),
-                reveals: document.querySelectorAll('.reveal-on-scroll'),
-                navLinks: document.querySelectorAll('.nav-link'),
-                yearSpan: document.getElementById('js-copyright-year')
-            };
-
-            /* =========================================
-               03. UTILITIES & ACTIONS
-            ========================================= */
-            const handleWhatsAppRedirect = () => {
-                const encodedMsg = encodeURIComponent(SITE_CONFIG.whatsappMessage);
-                const waUrl = `https://wa.me/${SITE_CONFIG.whatsapp}?text=${encodedMsg}`;
-                window.open(waUrl, '_blank', 'noopener,noreferrer');
-            };
-
-            /* =========================================
-               04. MOBILE DRAWER NAVIGATION
-            ========================================= */
-            const toggleDrawer = () => {
-                const isOpen = DOM.mobileDrawer.classList.contains('open');
-                DOM.mobileDrawer.classList.toggle('open', !isOpen);
-                DOM.mobileBtn.setAttribute('aria-expanded', !isOpen);
-                
-                // SVG icon morphing
-                const svg = DOM.mobileBtn.querySelector('svg');
-                if (!isOpen) {
-                    svg.innerHTML = `<line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line>`;
-                } else {
-                    svg.innerHTML = `<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>`;
-                }
-            };
-
-            const closeDrawer = () => {
-                DOM.mobileDrawer.classList.remove('open');
-                DOM.mobileBtn.setAttribute('aria-expanded', 'false');
-                const svg = DOM.mobileBtn.querySelector('svg');
-                svg.innerHTML = `<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>`;
-            };
-
-            /* =========================================
-               05. ACCESSIBLE FAQ ACCORDION
-            ========================================= */
-            const toggleFAQ = (btn) => {
-                const isExpanded = btn.getAttribute('aria-expanded') === 'true';
-                const panelId = btn.getAttribute('aria-controls');
-                const panel = document.getElementById(panelId);
-
-                // Collapse all other panels for clean accordion experience
-                DOM.faqTriggers.forEach(otherBtn => {
-                    if (otherBtn !== btn) {
-                        otherBtn.setAttribute('aria-expanded', 'false');
-                        const otherPanelId = otherBtn.getAttribute('aria-controls');
-                        const otherPanel = document.getElementById(otherPanelId);
-                        if (otherPanel) otherPanel.setAttribute('aria-hidden', 'true');
-                    }
-                });
-
-                btn.setAttribute('aria-expanded', !isExpanded);
-                if (panel) {
-                    panel.setAttribute('aria-hidden', isExpanded ? 'true' : 'false');
-                }
-            };
-
-            /* =========================================
-               06. SCROLL STATE & INTERSECTION OBSERVER
-            ========================================= */
-            const handleScrollHeader = () => {
-                if (window.scrollY > 20) {
-                    DOM.header.classList.add('scrolled');
-                } else {
-                    DOM.header.classList.remove('scrolled');
-                }
-            };
-
-            const initScrollObserver = () => {
-                const observer = new IntersectionObserver((entries) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            entry.target.classList.add('is-visible');
-                            observer.unobserve(entry.target);
-                        }
-                    });
-                }, {
-                    threshold: 0.1,
-                    rootMargin: '0px 0px -40px 0px'
-                });
-
-                DOM.reveals.forEach(el => observer.observe(el));
-            };
-
-            /* =========================================
-               07. INITIALIZATION
-            ========================================= */
-            const init = () => {
-                // Set Copyright Year
-                if (DOM.yearSpan) {
-                    DOM.yearSpan.textContent = new Date().getFullYear();
-                }
-
-                // Event Listeners
-                window.addEventListener('scroll', handleScrollHeader, { passive: true });
-                handleScrollHeader();
-
-                if (DOM.mobileBtn) {
-                    DOM.mobileBtn.addEventListener('click', toggleDrawer);
-                }
-
-                DOM.drawerCloses.forEach(link => {
-                    link.addEventListener('click', closeDrawer);
-                });
-
-                DOM.waTriggers.forEach(btn => {
-                    btn.addEventListener('click', handleWhatsAppRedirect);
-                });
-
-                DOM.faqTriggers.forEach(btn => {
-                    btn.addEventListener('click', () => toggleFAQ(btn));
-                });
-
-                initScrollObserver();
-            };
-
-            document.addEventListener('DOMContentLoaded', init);
-        })();
-    </script>
 </body>
 </html>
