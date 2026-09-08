@@ -1,7 +1,6 @@
-﻿import { initNavigation } from './navigation.js';
+import { initNavigation } from './navigation.js';
 import { initFAQ } from './faq.js';
 import { initInteractions } from './interactions.js';
-import { initModal } from './modal.js';
 
 export const SITE_CONFIG = {
     whatsapp: "[PLACEHOLDER: NOMOR WHATSAPP]",
@@ -29,5 +28,4 @@ document.addEventListener('DOMContentLoaded', () => {
     initNavigation();
     initFAQ();
     initInteractions();
-    initModal();
 });
